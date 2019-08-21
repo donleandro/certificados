@@ -37,4 +37,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+	/**
+     * evento.
+     *
+     * @return  \Illuminate\Support\Collection;
+     */
+    public function eventos()
+    {
+        return $this->belongsToMany('App\Evento');
+    }
+
+    /**
+     * Assign a evento.
+     *
+     * @param  $evento
+     * @return  mixed
+     */
+    public function assignEvento($evento)
+    {
+        return $this->eventos()->attach($evento);
+    }
+    /**
+     * Remove a evento.
+     *
+     * @param  $evento
+     * @return  mixed
+     */
+    public function removeEvento($evento)
+    {
+        return $this->eventos()->detach($evento);
+    }
+
 }

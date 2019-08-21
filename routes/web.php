@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//evento Routes
+Route::group(['middleware'=> 'web'],function(){
+  Route::resource('evento','\App\Http\Controllers\EventoController');
+  Route::post('evento/{id}/update','\App\Http\Controllers\EventoController@update');
+  Route::get('evento/{id}/delete','\App\Http\Controllers\EventoController@destroy');
+  Route::get('evento/{id}/deleteMsg','\App\Http\Controllers\EventoController@DeleteMsg');
+});
