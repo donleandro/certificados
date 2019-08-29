@@ -48,8 +48,15 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.upgrade');
 	})->name('upgrade');
 	
-	Route::resource('eventos', 'Eventos\EventoController');
 
+	Route::resource('eventos', 'Eventos\EventoController')->names([    	 
+    	'create' => 'eventos.create',
+    	'show' => 'eventos.show',
+    	'edit' => 'eventos.edit',
+    	'update' => 'eventos.update',
+    	'destroy' => 'eventos.destroy',
+	]);
+	
 });
 
 Route::group(['middleware' => 'auth'], function () {

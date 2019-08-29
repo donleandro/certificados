@@ -15,7 +15,7 @@ class EventoController extends Controller
      */
     public function index(Evento $model)
     {
-         return view('evento.index', ['datos' => $model->paginate(15)]);
+         return view('eventos.index', ['datos' => $model->paginate(15)]);
     }
 
     /**
