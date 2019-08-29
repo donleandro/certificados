@@ -13,9 +13,9 @@ class EventoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Evento $model)
     {
-        //
+         return view('evento.index', ['datos' => $model->paginate(15)]);
     }
 
     /**

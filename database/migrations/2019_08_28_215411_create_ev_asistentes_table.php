@@ -15,6 +15,11 @@ class CreateEvAsistentesTable extends Migration
     {
         Schema::create('ev_asistentes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->biginteger('user_id')->unsigned();        
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->biginteger('evento_id')->unsigned();        
+            $table->foreign('evento_id')->references('id')->on('ev_eventos');
+            $table->string('asistencia');
             $table->timestamps();
         });
     }
