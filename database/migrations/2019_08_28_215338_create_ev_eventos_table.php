@@ -17,10 +17,10 @@ class CreateEvEventosTable extends Migration
             $table->bigIncrements('id');
             $table->boolean('estado');
             $table->string('nombre');
-            $table->longText('descripcion');
-            $table->string('imagen');
+            $table->longText('descripcion');            
             $table->date('fecha');
             $table->time('hora');
+            $table->string('imagen')->unique();
             $table->timestamps();
         });
     }

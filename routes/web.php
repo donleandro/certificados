@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('upgrade');	
 
 	Route::resource('eventos', 'Eventos\EventoController')->names([    	 
+    	'index' => 'eventos',
     	'create' => 'eventos.create',
     	'show' => 'eventos.show',
     	'edit' => 'eventos.edit',

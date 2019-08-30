@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'evento-management', 'titlePage' => __('evento Management')])
+@extends('layouts.app', ['activePage' => 'eventos', 'titlePage' => __('Eventos')])
 
 @section('content')
   <div class="content">
@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('datos') }}</h4>
-                <p class="card-category"> {{ __('Here you can manage datos') }}</p>
+                <h4 class="card-title ">{{ __('Eventos') }}</h4>
+                <p class="card-category"> {{ __('Aquí puedes gestionar tus eventos') }}</p>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -25,40 +25,40 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('eventos.create') }}" class="btn btn-sm btn-primary">{{ __('Add dato') }}</a>
+                    <a href="{{ route('eventos.create') }}" class="btn btn-sm btn-primary">{{ __('Añadir evento') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('Name') }}
+                          {{ __('nombre') }}
                       </th>
                       <th>
-                        {{ __('Email') }}
+                        {{ __('descripcion') }}
                       </th>
                       <th>
-                        {{ __('Creation date') }}
+                        {{ __('fecha') }}
                       </th>
                       <th class="text-right">
-                        {{ __('Actions') }}
+                        {{ __('Acción') }}
                       </th>
                     </thead>
                     <tbody>
                       @foreach($datos as $dato)
                         <tr>
                           <td>
-                            {{ $dato->name }}
+                            {{ $dato->nombre }}
                           </td>
                           <td>
-                            {{ $dato->email }}
+                            {{ $dato->descripcion }}
                           </td>
                           <td>
-                            {{ $dato->created_at->format('Y-m-d') }}
+                            {{ $dato->fecha }}
                           </td>
                           <td class="td-actions text-right">
                             @if ($dato->id != auth()->id())
-                              <form action="{{ route('dato.destroy', $dato) }}" method="post">
+                              <form action="{{ route('eventos.destroy', $dato) }}" method="post">
                                   @csrf
                                   @method('delete')
                               
@@ -72,7 +72,7 @@
                                   </button>
                               </form>
                             @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('eventos.edit') }}" data-original-title="" title="">
+                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('eventos.edit', $dato) }}" data-original-title="" title="">
                                 <i class="material-icons">edit</i>
                                 <div class="ripple-container"></div>
                               </a>
