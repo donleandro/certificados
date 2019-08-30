@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 Auth::routes();
 
@@ -46,8 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
-	})->name('upgrade');
-	
+	})->name('upgrade');	
 
 	Route::resource('eventos', 'Eventos\EventoController')->names([    	 
     	'create' => 'eventos.create',
@@ -65,7 +64,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
-
-
-
-
