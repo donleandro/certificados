@@ -19,8 +19,14 @@
       </li>
       <li class="nav-item{{ $activePage == 'eventos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('eventos') }}">
-          <i class="material-icons">Eventos</i>
+          <i class="material-icons">next_week</i>
             <p>{{ __('Eventos') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'asistentes' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('asistentes') }}">
+          <i class="material-icons">how_to_reg</i>
+            <p>{{ __('Asistencia') }}</p>
         </a>
       </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">

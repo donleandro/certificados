@@ -13,9 +13,9 @@ class AsistenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Asistente $model)
     {
-        //
+        return view('asistentes.index', ['datos' => $model->paginate(15)]);
     }
 
     /**
@@ -25,7 +25,7 @@ class AsistenteController extends Controller
      */
     public function create()
     {
-        //
+        return view('asistentes.create');
     }
 
     /**

@@ -56,6 +56,15 @@ Route::group(['middleware' => 'auth'], function () {
     	'update' => 'eventos.update',
     	'destroy' => 'eventos.destroy',
 	]);
+
+	Route::resource('asistentes', 'Eventos\AsistenteController')->names([    	 
+    	'index' => 'asistentes',
+    	'create' => 'asistentes.create',
+    	'show' => 'asistentes.show',
+    	'edit' => 'asistentes.edit',
+    	'update' => 'asistentes.update',
+    	'destroy' => 'asistentes.destroy',
+	]);
 	
 });
 
