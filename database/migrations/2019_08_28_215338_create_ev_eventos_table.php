@@ -17,9 +17,9 @@ class CreateEvEventosTable extends Migration
             $table->bigIncrements('id');
             $table->boolean('estado')->nullable();
             $table->string('nombre');
-            $table->longText('descripcion');            
-            $table->date('fecha');
-            $table->time('hora');
+            $table->longText('descripcion')->nullable();            
+            $table->date('fecha')->nullable();
+            $table->time('hora')->nullable();
             $table->string('imagen')->unique();
             $table->timestamps();
         });

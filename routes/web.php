@@ -68,11 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 	])->middleware('administrador');
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
-	Route::get('certificado', ['as' => 'certificado.show', 'uses' => 'Eventos\CertificadoController@show']);
-
-
-
-
+	Route::get('certificados/{user}', ['as' => 'certificados.show', 'uses' => 'Eventos\CertificadoController@show']);
 	
 });
 
