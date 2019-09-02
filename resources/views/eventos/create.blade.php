@@ -20,6 +20,20 @@
                       <a href="{{ route('eventos') }}" class="btn btn-sm btn-primary">{{ __('Volver a la lista') }}</a>
                   </div>
                 </div>
+                @if ($errors->any())
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        @foreach ($errors->all() as $error)
+                          <span>{{ $error }}</span>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                @endif
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Nombre') }}</label>
                   <div class="col-sm-7">

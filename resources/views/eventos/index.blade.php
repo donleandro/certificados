@@ -56,8 +56,7 @@
                           <td>
                             {{ $dato->fecha }}
                           </td>
-                          <td class="td-actions text-right">
-                            @if ($dato->id != auth()->id())
+                          <td class="td-actions text-right">                          
                               <form action="{{ route('eventos.destroy', $dato) }}" method="post">
                                   @csrf
                                   @method('delete')
@@ -70,13 +69,7 @@
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
-                              </form>
-                            @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('eventos.edit', $dato) }}" data-original-title="" title="">
-                                <i class="material-icons">edit</i>
-                                <div class="ripple-container"></div>
-                              </a>
-                            @endif
+                              </form>                         
                           </td>
                         </tr>
                       @endforeach

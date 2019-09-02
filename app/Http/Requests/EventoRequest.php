@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Eventos\Evento;
+use App\Rules\ImagenUnique;
+use App\Model\Eventos\Evento;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -28,10 +29,10 @@ class EventoRequest extends FormRequest
         return [
             'nombre' => [
                 'required'
-            ],
+            ],  
             'imagen' => [
-                'unique:ev_eventos'
-            ],            
+                'required', new ImagenUnique
+            ],                       
         ];
     }
 }
