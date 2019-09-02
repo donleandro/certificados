@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Administrador
 {
@@ -14,7 +15,10 @@ class Administrador
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    { 
+        if (Auth::user()->rol_id > 2) {
+            return redirect('error404');
+        }
         return $next($request);
     }
 }

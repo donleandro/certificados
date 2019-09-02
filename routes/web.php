@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('upgrade');	
 
 
-
 	Route::resource('eventos', 'Eventos\EventoController')->names([    	 
     	'index' => 'eventos',
     	'create' => 'eventos.create',
@@ -57,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     	'edit' => 'eventos.edit',
     	'update' => 'eventos.update',
     	'destroy' => 'eventos.destroy',
-	]);
+	])->middleware('administrador');
 
 	Route::resource('asistentes', 'Eventos\AsistenteController')->names([    	 
     	'index' => 'asistentes',
@@ -66,7 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
     	'edit' => 'asistentes.edit',
     	'update' => 'asistentes.update',
     	'destroy' => 'asistentes.destroy',
-	]);
+	])->middleware('administrador');
+
+	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
+	Route::get('certificado', ['as' => 'certificado.show', 'uses' => 'Eventos\CertificadoController@show']);
 
 
 
