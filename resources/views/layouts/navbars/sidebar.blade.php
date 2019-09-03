@@ -17,6 +17,7 @@
             <p>{{ __('Inicio') }}</p>
         </a>
       </li>
+      @if (Auth::user()->rol_id <= 2)
       <li class="nav-item{{ $activePage == 'eventos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('eventos') }}">
           <i class="material-icons">next_week</i>
@@ -53,6 +54,16 @@
           </ul>
         </div>
       </li>
+      @endif
+
+      
+      <li class="nav-item{{ $activePage == 'certificados' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('certificados') }}">
+          <i class="material-icons">picture_as_pdf</i>
+            <p>{{ __('Certificados') }}</p>
+        </a>
+      </li>
+      
 
     {{--
 

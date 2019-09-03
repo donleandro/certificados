@@ -56,17 +56,7 @@ class EventoController extends Controller
 
         return redirect()->route('eventos')->withStatus(__('Evento creado con éxito.'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Eventos\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Evento $evento)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +66,7 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
-        //
+        return view('eventos.edit', compact('evento'));
     }
 
     /**
@@ -87,8 +77,22 @@ class EventoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Evento $evento)
-    {
-        //
+    {              
+        $evento->nombre = $request->nombre;
+        $evento->estado  = $request->estado;
+        $evento->descripcion  = $request->descripcion;
+        $evento->fecha  = $request->fecha;
+        $evento->hora  = $request->hora;
+
+        if ($request->imagen) {
+            $nombreImagen = $request->file('imagen')->getClientOriginalName(); 
+            $evento->imagen  = $nombreImagen;
+            Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
+        }
+
+        $evento->save(); 
+
+        return redirect()->route('eventos')->withStatus(__('Evento actualizado con éxito.'));
     }
 
     /**
@@ -99,6 +103,6 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
+        echo "En construcción";
     }
 }
