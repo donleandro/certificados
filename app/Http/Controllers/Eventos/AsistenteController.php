@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Eventos;
 
-use App\Model\Eventos\Asistente;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use App\Model\Eventos\Evento;
+use App\Model\Eventos\Asistente;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
 class AsistenteController extends Controller
@@ -23,9 +26,9 @@ class AsistenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('asistentes.create');
+    public function create(Evento $eventos)
+    {       
+        return view('asistentes.create', ['eventos' => $eventos->all() ]);
     }
 
     /**
@@ -36,7 +39,7 @@ class AsistenteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Excel::import(new UsersImport, $request->asistentes);  
     }
 
     /**

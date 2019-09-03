@@ -17,6 +17,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
+                      <a href="{{ asset('') }}" class="btn btn-sm btn-success">{{ __('ejemplo XLS') }}</a>
                       <a href="{{ route('asistentes') }}" class="btn btn-sm btn-primary">{{ __('Volver a la lista') }}</a>
                   </div>
                 </div>
@@ -35,21 +36,29 @@
                   </div>
                 @endif
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Nombre') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Evento') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('nombre') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" id="input-nombre" type="text" placeholder="{{ __('Nombre') }}" value="{{ old('nombre') }}" required="true" aria-required="true"/>
-                      @if ($errors->has('nombre'))
-                        <span id="nombre-error" class="error text-danger" for="input-nombre">{{ $errors->first('nombre') }}</span>
+                    <div class="form-group{{ $errors->has('evento') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('evento') ? ' is-invalid' : '' }}" id="input-evento" required="true" aria-required="true">
+                        <option value="{{ old('evento') }}">Seleccionar</option>
+                        @foreach($eventos as $evento )
+                        <option value="{{ $evento }}">{{ $evento->nombre }}</option>
+                        @endforeach
+                      </select>
+                      @if ($errors->has('evento'))
+                        <span id="evento-error" class="error text-danger" for="input-evento">{{ $errors->first('evento') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
-            
-                 <div id="app">
-                   <example-component></example-component>
-                 </div>
-                 
+                <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-asistentes">{{ __('Asistentes') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-control-file">
+                      <input class="form-control-file" name="asistentes" id="input-asistentes" type="file" required value="{{ old('asistentes') }}"/>
+                    </div>
+                  </div>
+                </div>             
                 </div>  
               
               <div class="card-footer ml-auto mr-auto">
@@ -62,8 +71,6 @@
     </div>
   </div>
 
-@push('js')
-  <script src="{{ asset('js/app.js') }}"></script>
-@endpush
+ 
 
 @endsection
