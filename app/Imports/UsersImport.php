@@ -19,7 +19,14 @@ class UsersImport implements ToModel, WithValidation
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {                   
+    {  
+
+        $usuario = User::where('email',$row)->first();
+
+        if ($usuario) {
+            return null;
+        }
+
         return new User([
             'rol_id'   => 3,
             'name'     => 'vacio',
@@ -32,6 +39,9 @@ class UsersImport implements ToModel, WithValidation
     {
         return [ 
 
+            '*.0' => [ 'required', 'email'],
+
+            /*
             '*.0' => [ 'required', 'email', function($attribute, $value, $onFailure) {
 
                 $usuario = User::where('email',$value)->first();
@@ -40,6 +50,7 @@ class UsersImport implements ToModel, WithValidation
                    $onFailure('El correo '.$value.' ya se encuentra ingresado');
                 }
             }],
+            */
 
         ];
     }

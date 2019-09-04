@@ -56,14 +56,14 @@
       </li>
       @endif
 
-      
+      @if (Auth::user()->rol_id == 3)
       <li class="nav-item{{ $activePage == 'certificados' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('certificados') }}">
           <i class="material-icons">picture_as_pdf</i>
             <p>{{ __('Certificados') }}</p>
         </a>
       </li>
-      
+      @endif
 
     {{--
 

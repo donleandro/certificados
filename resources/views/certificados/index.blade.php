@@ -23,6 +23,19 @@
                     </div>
                   </div>
                 @endif
+
+                @if (session('error'))
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ session('error') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                @endif                
                 
                 <div class="table-responsive">
                   <table class="table">
@@ -53,7 +66,7 @@
                             {{ $dato->fecha }}
                           </td>
                           <td class="td-actions text-right">                          
-                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('certificados', $dato) }}" data-original-title="" title="">
+                            <a rel="tooltip" class="btn btn-success btn-link" href="{{ url('certificados/'.$dato->id.'/'.Auth::user()->id) }}" data-original-title="" title="">
                               <i class="material-icons">find_in_page</i>
                               <div class="ripple-container"></div>
                             </a>                         

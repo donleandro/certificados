@@ -42,7 +42,7 @@
                       <select class="form-control{{ $errors->has('evento') ? ' is-invalid' : '' }}" id="input-evento" required="true" aria-required="true" name="evento">
                         <option value="{{ old('evento') }}">Seleccionar</option>
                         @foreach($eventos as $evento )
-                        <option value="{{ $evento }}">{{ $evento->nombre }}</option>
+                        <option value="{{ $evento->id }}">{{ $evento->nombre }}</option>
                         @endforeach
                       </select>
                       @if ($errors->has('evento'))

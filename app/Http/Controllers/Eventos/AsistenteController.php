@@ -17,7 +17,7 @@ class AsistenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Asistente $model)
+    public function index(Evento $model)
     {
         return view('asistentes.index', ['datos' => $model->paginate(15)]);
     }
@@ -52,11 +52,19 @@ class AsistenteController extends Controller
         {
             $email = $asistentes[0][$i][0];
 
-            $user = User::where('email',$email)->first();
-            
-            $asistencias = new Asistente;
-            $asistencias->evento_id = $request->evento;
-            $asistencias->asistencia = $user->id;
+            $user = User::where('email',$email)->first(); 
+          
+            $noValido = Asistente::where('user_id',$user->id)->where('evento_id',$request->evento)->first();
+ 
+            if(!$noValido)
+            {
+                $asistencias = new Asistente;
+                $asistencias->evento_id = $request->evento;
+                $asistencias->user_id = $user->id;
+                $asistencias->asistencia = $request->evento.'-'.rand();
+                $asistencias->save();
+            }            
+           
         } 
 
         return redirect()->route('asistentes')->withStatus(__('Asistentes agregados correctamente.'));
@@ -69,9 +77,11 @@ class AsistenteController extends Controller
      * @param  \App\Model\Eventos\Asistente  $asistente
      * @return \Illuminate\Http\Response
      */
-    public function show(Asistente $asistente)
+    public function show($id, Evento $evento)
     {
-        //
+        $asistentes = Asistente::where('evento_id',$id)->get();
+        $evento = $evento->find($id);   
+        return view('asistentes.show', compact('evento'), ['datos' => $asistentes]);         
     }
 
     /**

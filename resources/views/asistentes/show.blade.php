@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('asistentes') }}</h4>
-                <p class="card-category"> {{ __('Aquí puedes gestionar tus asistentes') }}</p>
+                <h4 class="card-title ">{{$evento->nombre}}</h4>
+                <p class="card-category"> {{ __('Aquí puedes generar los certificados') }}</p>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -25,7 +25,7 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('asistentes.create') }}" class="btn btn-sm btn-primary">{{ __('Añadir asistentes') }}</a>
+                    <a href="{{ route('asistentes') }}" class="btn btn-sm btn-primary">{{ __('Volver a la lista') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -33,32 +33,20 @@
                     <thead class=" text-primary">
                       <th>
                           {{ __('nombre') }}
-                      </th>
-                      <th>
-                        {{ __('descripcion') }}
-                      </th>
-                      <th>
-                        {{ __('fecha') }}
-                      </th>
+                      </th> 
                       <th class="text-right">
-                        {{ __('Acción') }}
+                        {{ __('Asistentes') }}
                       </th>
                     </thead>
                     <tbody>
                       @foreach($datos as $dato)
                         <tr>
                           <td>
-                            {{ $dato->nombre }}
-                          </td>
-                          <td>
-                            {{ $dato->descripcion }}
-                          </td>
-                          <td>
-                            {{ $dato->fecha }}
+                            {{ $dato->usuarios->name }}
                           </td>
                           <td class="td-actions text-right">                          
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('asistentes.show', $dato) }}" data-original-title="" title="">
-                                    <i class="material-icons">search</i>
+                              <a rel="tooltip" class="btn btn-danger btn-link" href="{{ route('asistentes.show', $dato) }}" data-original-title="" title="">
+                                    <i class="material-icons">picture_as_pdf</i>
                                     <div class="ripple-container"></div>
                                   </a>                        
                           </td>
