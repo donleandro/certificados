@@ -2,8 +2,12 @@
 hola
  
  <br>
- {{$usuario->name}}
+ {{$asistencia->usuarios->name}}
 
  <br>
 
-{{$evento->nombre}}
+{{$asistencia->eventos->nombre}}
+
+<br>
+
+Serial: {{$asistencia->asistencia}}

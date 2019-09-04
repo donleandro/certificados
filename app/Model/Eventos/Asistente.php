@@ -10,7 +10,7 @@ class Asistente extends Model
 
    	public function eventos()
 	{
-	    return $this->belongsTo('App\Model\Evento','evento_id');
+	    return $this->belongsTo('App\Model\Eventos\Evento','evento_id');
 	}
 
 	public function usuarios()

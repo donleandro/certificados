@@ -45,7 +45,7 @@
                             {{ $dato->usuarios->name }}
                           </td>
                           <td class="td-actions text-right">                          
-                              <a rel="tooltip" class="btn btn-danger btn-link" href="{{ route('asistentes.show', $dato) }}" data-original-title="" title="">
+                              <a rel="tooltip" class="btn btn-danger btn-link" href="{{ url('certificados/'.$dato->evento_id.'/'. $dato->user_id) }}" data-original-title="" title="">
                                     <i class="material-icons">picture_as_pdf</i>
                                     <div class="ripple-container"></div>
                                   </a>                        
