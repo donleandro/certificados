@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Eventos;
 
+use App\User;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use App\Model\Eventos\Evento;
@@ -39,7 +40,27 @@ class AsistenteController extends Controller
      */
     public function store(Request $request)
     {
-       Excel::import(new UsersImport, $request->asistentes);  
+        $this->Validate($request,[
+            'evento' => 'required|',            
+            'asistentes' => 'mimes:xlsx',           
+        ]);
+
+        Excel::import(new UsersImport, $request->asistentes);
+        $asistentes = (new UsersImport)->toArray($request->asistentes);
+        
+        for ($i=0; $i < count($asistentes[0]); $i++) 
+        {
+            $email = $asistentes[0][$i][0];
+
+            $user = User::where('email',$email)->first();
+            
+            $asistencias = new Asistente;
+            $asistencias->evento_id = $request->evento;
+            $asistencias->asistencia = $user->id;
+        } 
+
+        return redirect()->route('asistentes')->withStatus(__('Asistentes agregados correctamente.'));
+
     }
 
     /**

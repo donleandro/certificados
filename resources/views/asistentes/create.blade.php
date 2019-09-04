@@ -17,7 +17,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ asset('') }}" class="btn btn-sm btn-success">{{ __('ejemplo XLS') }}</a>
+                      <a href="{{ asset('') }}" class="btn btn-sm btn-success">{{ __('ejemplo .XLSX') }}</a>
                       <a href="{{ route('asistentes') }}" class="btn btn-sm btn-primary">{{ __('Volver a la lista') }}</a>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Evento') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('evento') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('evento') ? ' is-invalid' : '' }}" id="input-evento" required="true" aria-required="true">
+                      <select class="form-control{{ $errors->has('evento') ? ' is-invalid' : '' }}" id="input-evento" required="true" aria-required="true" name="evento">
                         <option value="{{ old('evento') }}">Seleccionar</option>
                         @foreach($eventos as $evento )
                         <option value="{{ $evento }}">{{ $evento->nombre }}</option>
@@ -55,7 +55,7 @@
                   <label class="col-sm-2 col-form-label" for="input-asistentes">{{ __('Asistentes') }}</label>
                   <div class="col-sm-7">
                     <div class="form-control-file">
-                      <input class="form-control-file" name="asistentes" id="input-asistentes" type="file" required value="{{ old('asistentes') }}"/>
+                      <input class="form-control-file" name="asistentes" id="input-asistentes" type="file" required value="{{ old('asistentes') }}"  accept=".xlsx"/>
                     </div>
                   </div>
                 </div>             

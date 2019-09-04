@@ -8,7 +8,7 @@
         @csrf
 
         <div class="card card-login card-hidden mb-3">
-          <div class="card-header card-header-warning text-center">
+          <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Iniciar sesión') }}</strong></h4>
             <div class="social-line">
               <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-warning btn-link btn-lg">{{ __('Ingresar') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Ingresar') }}</button>
           </div>
         </div>
       </form>
