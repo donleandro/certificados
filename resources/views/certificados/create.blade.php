@@ -48,7 +48,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('descripcion') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">  
+                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">
                        <textarea class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" name="descripcion" id="input-descripcion" type="" placeholder="{{ __('descripcion') }}" value="{{ old('descripcion') }}"  rows="3">{{ old('descripcion') }}</textarea>
                       @if ($errors->has('descripcion'))
                         <span id="descripcion-error" class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
@@ -91,9 +91,9 @@
                       <div class="togglebutton">
                         <label>
                           <input name="estado" type="checkbox" checked="" value="{{ old('estado', 1) }}">
-                          <span class="toggle"></span>         
+                          <span class="toggle"></span>
                         </label>
-                      </div> 
+                      </div> asdasd
                       @if ($errors->has('estado'))
                       <span id="estado-error" class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                       @endif
@@ -103,8 +103,8 @@
 
 
 
-                </div>  
-              
+                </div>
+
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Añadir evento') }}</button>
               </div>
