@@ -16,40 +16,14 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+Route::get('register', function () { return redirect('home'); });
+Route::post('register', function () { return redirect('home'); });
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
-
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
-
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
-
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
-
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
-
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
-
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');	
-
-
-	Route::resource('eventos', 'Eventos\EventoController')->names([    	 
+	Route::resource('eventos', 'Eventos\EventoController')->names([
     	'index' => 'eventos',
     	'create' => 'eventos.create',
     	'show' => 'eventos.show',
@@ -58,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     	'destroy' => 'eventos.destroy',
 	])->middleware('administrador');
 
-	Route::resource('asistentes', 'Eventos\AsistenteController')->names([    	 
+	Route::resource('asistentes', 'Eventos\AsistenteController')->names([
     	'index' => 'asistentes',
     	'create' => 'asistentes.create',
     	'show' => 'asistentes.show',
@@ -69,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
 	Route::get('certificados/{evento}/{user}', 'Eventos\CertificadoController@pdf');
-	
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

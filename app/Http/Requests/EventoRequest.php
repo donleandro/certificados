@@ -29,10 +29,19 @@ class EventoRequest extends FormRequest
         return [
             'nombre' => [
                 'required'
-            ],  
+            ],
+            'descripcion' => [
+                'required'
+            ],
+            'fecha' => [
+                'required'
+            ],
+            'hora' => [
+                'required'
+            ],
             'imagen' => [
                 'required', new ImagenUnique
-            ],                       
+            ],
         ];
     }
 }

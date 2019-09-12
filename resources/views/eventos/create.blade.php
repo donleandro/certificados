@@ -46,10 +46,10 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('descripcion') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Descripción') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">  
-                       <textarea class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" name="descripcion" id="input-descripcion" type="" placeholder="{{ __('descripcion') }}" value="{{ old('descripcion') }}"  rows="3">{{ old('descripcion') }}</textarea>
+                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">
+                       <textarea class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" name="descripcion" id="input-descripcion" type="" placeholder="{{ __('Descripción') }}" value="{{ old('descripcion') }}"  rows="3" required>{{ old('descripcion') }}</textarea>
                       @if ($errors->has('descripcion'))
                         <span id="descripcion-error" class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                       @endif
@@ -57,10 +57,10 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-fecha">{{ __(' fecha') }}</label>
+                  <label class="col-sm-2 col-form-label" for="input-fecha">{{ __('Fecha') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('fecha') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" input type="date" name="fecha" id="input-fecha" placeholder="{{ __('fecha') }}" value="{{ old('fecha') }}"  />
+                      <input class="form-control{{ $errors->has('fecha') ? ' is-invalid' : '' }}" input type="date" name="fecha" id="input-fecha" placeholder="{{ __('Fecha') }}" value="{{ old('fecha') }}"  required/>
                       @if ($errors->has('fecha'))
                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('fecha') }}</span>
                       @endif
@@ -68,10 +68,10 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-hora">{{ __('Hora') }}</label>
+                  <label class="col-sm-2 col-form-label" for="input-hora">{{ __('Duración') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
-                      <input class="form-control" name="hora" id="input-hora" type="time" placeholder="{{ __('Hora') }}" value="{{ old('hora') }}"  />
+                      <input class="form-control" name="hora" id="input-hora" type="number" placeholder="{{ __('Hora') }}" value="{{ old('hora') }}"  min="0" required />
                     </div>
                   </div>
                 </div>
@@ -91,9 +91,9 @@
                       <div class="togglebutton">
                         <label>
                           <input name="estado" type="checkbox" checked="" value="{{ old('estado', 1) }}">
-                          <span class="toggle"></span>         
+                          <span class="toggle"></span>
                         </label>
-                      </div> 
+                      </div>
                       @if ($errors->has('estado'))
                       <span id="estado-error" class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                       @endif
@@ -103,8 +103,8 @@
 
 
 
-                </div>  
-              
+                </div>
+
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Añadir evento') }}</button>
               </div>

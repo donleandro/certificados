@@ -19,9 +19,9 @@ class UsersImport implements ToModel, WithValidation
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {  
+    {
 
-        $usuario = User::where('email',$row)->first();
+        $usuario = User::where('email',$row[2])->first();
 
         if ($usuario) {
             return null;
@@ -29,17 +29,20 @@ class UsersImport implements ToModel, WithValidation
 
         return new User([
             'rol_id'   => 3,
-            'name'     => 'vacio',
-            'email'    => $row[0], 
+            'name'     => $row[0],
+            'apellido' => $row[1],
+            'email'    => $row[2],
+            'tipo_doc' => $row[3],
+            'documento'=> $row[4],
             'password' => 'x',
-        ]); 
+        ]);
     }
- 
+
     public function rules(): array
     {
-        return [ 
+        return [
 
-            '*.0' => [ 'required', 'email'],
+            '*.2' => [ 'required', 'email'],
 
             /*
             '*.0' => [ 'required', 'email', function($attribute, $value, $onFailure) {
@@ -60,7 +63,7 @@ class UsersImport implements ToModel, WithValidation
      */
     public function customValidationAttributes()
     {
-        return ['0' => 'email'];
+        return ['2' => 'email'];
     }
 
 

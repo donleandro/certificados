@@ -17,7 +17,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-md-12 text-right">
-                      <a href="{{ asset('') }}" class="btn btn-sm btn-success">{{ __('ejemplo .XLSX') }}</a>
+                      <a href="{{ asset('storage/ejemplos.xlsx') }}" class="btn btn-sm btn-success">{{ __('ejemplo .XLSX') }}</a>
                       <a href="{{ route('asistentes') }}" class="btn btn-sm btn-primary">{{ __('Volver a la lista') }}</a>
                   </div>
                 </div>
@@ -58,9 +58,9 @@
                       <input class="form-control-file" name="asistentes" id="input-asistentes" type="file" required value="{{ old('asistentes') }}"  accept=".xlsx"/>
                     </div>
                   </div>
-                </div>             
-                </div>  
-              
+                </div>
+                </div>
+
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Añadir asistentes') }}</button>
               </div>
@@ -71,6 +71,6 @@
     </div>
   </div>
 
- 
+
 
 @endsection

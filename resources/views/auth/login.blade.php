@@ -10,17 +10,7 @@
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Iniciar sesión') }}</strong></h4>
-            <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-google-plus"></i>
-              </a>
-            </div>
+         
           </div>
           <div class="card-body">
             <p class="card-description text-center">{{ __('O inicie sesión su cuenta ') }} <strong>je.peralta@uniandes.edu.co</strong> {{ __(' Uniandes  ') }}<strong></strong> </p>
@@ -75,11 +65,6 @@
                     <small>{{ __('¿Se te olvidó tu contraseña?') }}</small>
                 </a>
             @endif
-        </div>
-        <div class="col-6 text-right">
-            <a href="{{ route('register') }}" class="text-light">
-                <small>{{ __('Crear una nueva cuenta') }}</small>
-            </a>
         </div>
       </div>
     </div>

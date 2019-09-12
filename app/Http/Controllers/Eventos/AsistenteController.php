@@ -28,7 +28,7 @@ class AsistenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Evento $eventos)
-    {       
+    {
         return view('asistentes.create', ['eventos' => $eventos->all() ]);
     }
 
@@ -41,21 +41,21 @@ class AsistenteController extends Controller
     public function store(Request $request)
     {
         $this->Validate($request,[
-            'evento' => 'required|',            
-            'asistentes' => 'mimes:xlsx',           
+            'evento' => 'required|',
+            'asistentes' => 'mimes:xlsx',
         ]);
 
         Excel::import(new UsersImport, $request->asistentes);
         $asistentes = (new UsersImport)->toArray($request->asistentes);
-        
-        for ($i=0; $i < count($asistentes[0]); $i++) 
-        {
-            $email = $asistentes[0][$i][0];
 
-            $user = User::where('email',$email)->first(); 
-          
+        for ($i=0; $i < count($asistentes[0]); $i++)
+        {
+            echo $email = $asistentes[0][$i][2];
+
+            $user = User::where('email',$email)->first();
+
             $noValido = Asistente::where('user_id',$user->id)->where('evento_id',$request->evento)->first();
- 
+
             if(!$noValido)
             {
                 $asistencias = new Asistente;
@@ -63,9 +63,8 @@ class AsistenteController extends Controller
                 $asistencias->user_id = $user->id;
                 $asistencias->asistencia = $request->evento.'-'.rand();
                 $asistencias->save();
-            }            
-           
-        } 
+            }
+        }
 
         return redirect()->route('asistentes')->withStatus(__('Asistentes agregados correctamente.'));
 
@@ -80,8 +79,8 @@ class AsistenteController extends Controller
     public function show($id, Evento $evento)
     {
         $asistentes = Asistente::where('evento_id',$id)->get();
-        $evento = $evento->find($id);   
-        return view('asistentes.show', compact('evento'), ['datos' => $asistentes]);         
+        $evento = $evento->find($id);
+        return view('asistentes.show', compact('evento'), ['datos' => $asistentes]);
     }
 
     /**

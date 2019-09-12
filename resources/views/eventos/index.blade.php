@@ -32,13 +32,13 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('nombre') }}
+                          {{ __('Nombre') }}
                       </th>
                       <th>
-                        {{ __('descripcion') }}
+                        {{ __('Fecha') }}
                       </th>
                       <th>
-                        {{ __('fecha') }}
+                        {{ __('Duración') }}
                       </th>
                       <th class="text-right">
                         {{ __('Acción') }}
@@ -51,16 +51,16 @@
                             {{ $dato->nombre }}
                           </td>
                           <td>
-                            {{ $dato->descripcion }}
-                          </td>
-                          <td>
                             {{ $dato->fecha }}
                           </td>
-                          <td class="td-actions text-right">                          
+                          <td>
+                            {{ $dato->hora }}
+                          </td>
+                          <td class="td-actions text-right">
                               <form action="{{ route('eventos.destroy', $dato) }}" method="post">
                                   @csrf
                                   @method('delete')
-                              
+
                                   <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('eventos.edit', $dato) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
@@ -69,7 +69,7 @@
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
-                              </form>                         
+                              </form>
                           </td>
                         </tr>
                       @endforeach

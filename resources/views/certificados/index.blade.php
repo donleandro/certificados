@@ -35,22 +35,22 @@
                       </div>
                     </div>
                   </div>
-                @endif                
-                
+                @endif
+
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('nombre') }}
+                          {{ __('Nombre') }}
                       </th>
                       <th>
-                        {{ __('descripcion') }}
+                        {{ __('Fecha') }}
                       </th>
                       <th>
-                        {{ __('fecha') }}
+                        {{ __('Duración') }}
                       </th>
                       <th class="text-right">
-                        {{ __('Acción') }}
+                        {{ __('Descargar') }}
                       </th>
                     </thead>
                     <tbody>
@@ -60,16 +60,16 @@
                             {{ $dato->nombre }}
                           </td>
                           <td>
-                            {{ $dato->descripcion }}
-                          </td>
-                          <td>
                             {{ $dato->fecha }}
                           </td>
-                          <td class="td-actions text-right">                          
+                          <td>
+                            {{ $dato->hora }}
+                          </td>
+                          <td class="td-actions text-right">
                             <a rel="tooltip" class="btn btn-success btn-link" href="{{ url('certificados/'.$dato->id.'/'.Auth::user()->id) }}" data-original-title="" title="">
-                              <i class="material-icons">find_in_page</i>
+                              <i class="material-icons">cloud_download</i> DESCARGAR
                               <div class="ripple-container"></div>
-                            </a>                         
+                            </a>
                           </td>
                         </tr>
                       @endforeach
