@@ -22,18 +22,18 @@ class CertificadoController extends Controller
         return view('certificados.index', ['datos' => $model->paginate(15)]);
     }
 
-   
+
     public function pdf($evento, $user)
     {
         $usuario = User::find($user);
-        $evento  = Evento::find($evento);      
+        $evento  = Evento::find($evento);
         $asistencia = Asistente::where('user_id',$user)->where('evento_id',$evento->id)->first();
 
-        if (!$usuario) {          
+        if (!$usuario) {
             return redirect()->route('certificados')->with('error', 'Usuario no existe!');
         }
 
-        if (!$evento) {           
+        if (!$evento) {
             return redirect()->route('certificados')->with('error', 'Evento no existe!');
         }
 
@@ -42,15 +42,15 @@ class CertificadoController extends Controller
         }
 
         if (Auth::user()->rol_id <= 2) {
-            $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia]);
+            $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia])->setPaper('letter', 'landscape');
             return $pdf->download('certificado.pdf');
         }
-        if(Auth::user()->rol_id == 3){            
-         
+        if(Auth::user()->rol_id == 3){
+
             if (Auth::user()->id == $usuario->id) {
 
-                $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia]);
-                return $pdf->download('certificado.pdf');                
+                $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia])->setPaper('letter', 'landscape');
+                return $pdf->download('certificado.pdf');
             }
 
             return redirect()->route('certificados')->with('error', 'Esta perdido??');
