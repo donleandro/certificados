@@ -30,15 +30,15 @@ class CertificadoController extends Controller
         $asistencia = Asistente::where('user_id',$user)->where('evento_id',$evento->id)->first();
 
         if (!$usuario) {
-            return redirect()->route('certificados')->with('error', 'Usuario no existe!');
+            return redirect()->route('certificados')->with('error', '!Usuario no existe!');
         }
 
         if (!$evento) {
-            return redirect()->route('certificados')->with('error', 'Evento no existe!');
+            return redirect()->route('certificados')->with('error', '!Evento no existe!');
         }
 
         if (!$asistencia) {
-             return redirect()->route('certificados')->with('error', 'No asistió al evento!');
+             return redirect()->route('certificados')->with('error', '!No asistió al evento!');
         }
 
         if (Auth::user()->rol_id <= 2) {
@@ -53,7 +53,7 @@ class CertificadoController extends Controller
                 return $pdf->download('certificado.pdf');
             }
 
-            return redirect()->route('certificados')->with('error', 'Esta perdido??');
+            return redirect()->route('certificados')->with('error', '¿Está perdido?');
         }
     }
 }

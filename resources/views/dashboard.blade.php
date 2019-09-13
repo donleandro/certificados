@@ -4,25 +4,70 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
+        @if (Auth::user()->rol_id == 3)
         <div class="col-lg-3 col-md-6 col-sm-6">
+          <a class="nav-link" href="{{ route('eventos') }}">
           <div class="card card-stats">
-            <div class="card-header card-header-warning card-header-icon">
+            <div class="card-header card-header-primary card-header-icon">
               <div class="card-icon">
-                <i class="material-icons">content_copy</i>
+                <i class="material-icons">picture_as_pdf</i>
               </div>
-              <p class="card-category">Used Space</p>
-              <h3 class="card-title">49/50
-                <small>GB</small>
+              <p class="card-category">{{ __('Administrar') }}</p>
+              <h3 class="card-title">{{ __('Certificados') }}
               </h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons text-danger">warning</i>
-                <a href="#pablo">Get More Space...</a>
+
               </div>
             </div>
           </div>
+          </a>
         </div>
+        @endif
+
+        @if (Auth::user()->rol_id <= 2)
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <a class="nav-link" href="{{ route('eventos') }}">
+          <div class="card card-stats">
+            <div class="card-header card-header-primary card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">next_week</i>
+              </div>
+              <p class="card-category">{{ __('Administrar') }}</p>
+              <h3 class="card-title">{{ __('Eventos') }}
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <a class="nav-link" href="{{ route('asistentes') }}">
+          <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">how_to_reg</i>
+              </div>
+              <p class="card-category">{{ __('Administrar') }}</p>
+              <h3 class="card-title">{{ __('Asistencia') }}
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+        @endif
+
+
       </div>
     </div>
   </div>
