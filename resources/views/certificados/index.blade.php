@@ -63,7 +63,7 @@
                             {{ $dato->fecha }}
                           </td>
                           <td>
-                            {{ $dato->hora }}
+                            {{ $dato->hora }} Horas
                           </td>
                           <td class="td-actions text-right">
                             <a rel="tooltip" class="btn btn-success btn-link" href="{{ url('certificados/'.$dato->id.'/'.Auth::user()->id) }}" data-original-title="" title="">

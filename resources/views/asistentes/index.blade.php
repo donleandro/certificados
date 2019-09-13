@@ -54,7 +54,7 @@
                             {{ $dato->fecha }}
                           </td>
                           <td>
-                            {{ $dato->hora }}
+                            {{ $dato->hora }} Horas
                           </td>
                           <td class="td-actions text-right">
                               <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('asistentes.show', $dato) }}" data-original-title="" title="">

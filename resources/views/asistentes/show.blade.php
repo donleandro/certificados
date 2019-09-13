@@ -32,8 +32,17 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('nombre') }}
-                      </th> 
+                          {{ __('Nombre') }}
+                      </th>
+                      <th>
+                          {{ __('Apellido') }}
+                      </th>
+                      <th>
+                          {{ __('Correo') }}
+                      </th>
+                      <th>
+                          {{ __('Documento') }}
+                      </th>
                       <th class="text-right">
                         {{ __('Asistentes') }}
                       </th>
@@ -44,11 +53,20 @@
                           <td>
                             {{ $dato->usuarios->name }}
                           </td>
-                          <td class="td-actions text-right">                          
+                          <td>
+                            {{ $dato->usuarios->apellido }}
+                          </td>
+                          <td>
+                            {{ $dato->usuarios->email }}
+                          </td>
+                          <td>
+                            {{ $dato->usuarios->tipo_doc }} {{ $dato->usuarios->documento }}
+                          </td>
+                          <td class="td-actions text-right">
                               <a rel="tooltip" class="btn btn-danger btn-link" href="{{ url('certificados/'.$dato->evento_id.'/'. $dato->user_id) }}" data-original-title="" title="">
-                                    <i class="material-icons">picture_as_pdf</i>
+                                    <i class="material-icons">picture_as_pdf</i> DESCARGAR
                                     <div class="ripple-container"></div>
-                                  </a>                        
+                                  </a>
                           </td>
                         </tr>
                       @endforeach
