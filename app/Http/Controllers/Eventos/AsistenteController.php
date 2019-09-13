@@ -10,6 +10,9 @@ use App\Model\Eventos\Asistente;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\NuevoUsuario;
+
 class AsistenteController extends Controller
 {
     /**
@@ -62,6 +65,7 @@ class AsistenteController extends Controller
                 $asistencias->evento_id = $request->evento;
                 $asistencias->user_id = $user->id;
                 $asistencias->asistencia = $request->evento.'-'.rand();
+                $user->notify(new NuevoUsuario());
                 $asistencias->save();
             }
         }
