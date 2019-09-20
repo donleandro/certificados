@@ -65,8 +65,8 @@ class AsistenteController extends Controller
                 $asistencias->evento_id = $request->evento;
                 $asistencias->user_id = $user->id;
                 $asistencias->asistencia = $request->evento.'-'.rand();
-                $user->notify(new NuevoUsuario());
                 $asistencias->save();
+                $asistencias->notify(new NuevoUsuario());
             }
         }
 
