@@ -7,6 +7,7 @@ use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use App\Model\Eventos\Evento;
 use App\Model\Eventos\Asistente;
+use App\Exports\AsistentesExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
@@ -53,18 +54,24 @@ class AsistenteController extends Controller
 
         for ($i=0; $i < count($asistentes[0]); $i++)
         {
-            echo $email = $asistentes[0][$i][2];
+            $email = $asistentes[0][$i][2];
 
             $user = User::where('email',$email)->first();
 
             $noValido = Asistente::where('user_id',$user->id)->where('evento_id',$request->evento)->first();
+            $serial = Asistente::max('id');
 
             if(!$noValido)
             {
                 $asistencias = new Asistente;
                 $asistencias->evento_id = $request->evento;
                 $asistencias->user_id = $user->id;
-                $asistencias->asistencia = $request->evento.'-'.rand();
+                if (is_null($serial)) {
+                  $asistencias->asistencia = 1;
+                }
+                else {
+                   $asistencias->asistencia = $serial+1;
+                }
                 $asistencias->save();
                 $asistencias->notify(new NuevoUsuario());
             }
@@ -98,16 +105,10 @@ class AsistenteController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Eventos\Asistente  $asistente
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Asistente $asistente)
+
+    public function descargar($id)
     {
-        //
+        return Excel::download(new AsistentesExport($id), 'asistentes.xlsx');
     }
 
     /**

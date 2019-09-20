@@ -37,9 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
     	'create' => 'asistentes.create',
     	'show' => 'asistentes.show',
     	'edit' => 'asistentes.edit',
-    	'update' => 'asistentes.update',
     	'destroy' => 'asistentes.destroy',
 	])->middleware('administrador');
+
+  Route::get('descargar/asistentes/{id}', 'Eventos\AsistenteController@descargar');
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
 	Route::get('certificados/{evento}/{user}', 'Eventos\CertificadoController@pdf');

@@ -3,15 +3,23 @@
 namespace App\Exports;
 
 use App\Model\Eventos\Asistente;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class AsistentesExport implements FromCollection
+class AsistentesExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+
+
+    public function __construct(int $evento)
     {
-        return Asistente::all();
+        $this->evento = $evento;
     }
+
+    public function view(): View
+    {
+        return view('certificados.excel', [
+            'asistentes' => Asistente::where('evento_id', $this->evento)->get()
+        ]);
+    }
+
 }

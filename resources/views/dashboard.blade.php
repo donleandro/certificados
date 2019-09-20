@@ -13,8 +13,8 @@
                 <i class="material-icons">picture_as_pdf</i>
               </div>
               <p class="card-category">{{ __('Administrar') }}</p>
-              <h3 class="card-title">{{ __('Certificados') }}
-              </h3>
+              <h4 class="card-title">{{ __('Certificados') }}
+              </h4>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -35,8 +35,8 @@
                 <i class="material-icons">next_week</i>
               </div>
               <p class="card-category">{{ __('Administrar') }}</p>
-              <h3 class="card-title">{{ __('Eventos') }}
-              </h3>
+              <h4 class="card-title">{{ __('Eventos') }}
+              </h4>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -54,8 +54,8 @@
                 <i class="material-icons">how_to_reg</i>
               </div>
               <p class="card-category">{{ __('Administrar') }}</p>
-              <h3 class="card-title">{{ __('Asistencia') }}
-              </h3>
+              <h4 class="card-title">{{ __('Asistencia') }}
+              </h4>
             </div>
             <div class="card-footer">
               <div class="stats">
