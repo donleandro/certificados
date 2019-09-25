@@ -3,10 +3,14 @@
 namespace App\Model\Eventos;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\CustomResetPasswordNotification;
 
 class Asistente extends Model
 {
    	protected $table = 'ev_asistentes';
+
+    use Notifiable;
 
    	public function eventos()
 	{
@@ -17,6 +21,11 @@ class Asistente extends Model
 	{
 	    return $this->belongsTo('App\User','user_id');
 	}
+
+  public function sendPasswordResetNotification($token)
+  {
+     $this->notify(new CustomResetPasswordNotification($token));
+  }
 
 
 }
