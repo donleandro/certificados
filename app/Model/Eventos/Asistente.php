@@ -8,11 +8,11 @@ use App\Notifications\CustomResetPasswordNotification;
 
 class Asistente extends Model
 {
-   	protected $table = 'ev_asistentes';
-
     use Notifiable;
 
-   	public function eventos()
+   	protected $table = 'ev_asistentes';
+
+  public function eventos()
 	{
 	    return $this->belongsTo('App\Model\Eventos\Evento','evento_id');
 	}

@@ -19,7 +19,7 @@ class CreateEvEventosTable extends Migration
             $table->string('nombre');
             $table->longText('descripcion')->nullable();
             $table->date('fecha')->nullable();
-            $table->integer('hora')->nullable();
+            $table->double('hora')->nullable();
             $table->string('imagen')->unique();
             $table->timestamps();
         });
