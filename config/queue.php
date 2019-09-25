@@ -65,7 +65,12 @@ return [
             'retry_after' => 90,
             'block_for' => null,
         ],
-
+        'rateLimit' => [
+    'emails' => [
+        'allows' => 2,
+        'every' => 10
+    ]
+]
     ],
 
     /*
