@@ -56,4 +56,41 @@ class CertificadoController extends Controller
             return redirect()->route('certificados')->with('error', '¿Está perdido?');
         }
     }
+
+
+    public function pdfb($evento, $user)
+    {
+        $usuario = User::find($user);
+        $evento  = Evento::find($evento);
+        $asistencia = Asistente::where('user_id',$user)->where('evento_id',$evento->id)->first();
+
+        if (!$usuario) {
+            return redirect()->route('certificados')->with('error', '!Usuario no existe!');
+        }
+
+        if (!$evento) {
+            return redirect()->route('certificados')->with('error', '!Evento no existe!');
+        }
+
+        if (!$asistencia) {
+             return redirect()->route('certificados')->with('error', '!No asistió al evento!');
+        }
+
+        if (Auth::user()->rol_id <= 2) {
+            $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia])->setPaper('letter', 'landscape');
+            return $pdf->download('certificado.pdf');
+        }
+        if(Auth::user()->rol_id == 3){
+
+            if (Auth::user()->id == $usuario->id) {              
+
+                return view('certificado.pdf', ['asistencia' => $asistencia]);
+            }
+
+            return redirect()->route('certificados')->with('error', '¿Está perdido?');
+        }
+    }
+
+
+
 }
