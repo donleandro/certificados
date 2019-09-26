@@ -40,6 +40,11 @@ class CertificadoController extends Controller
       public function validar(Request $request)
       {
           $this->Validate($request,['referencia' => 'required']);
+          $certificado = Asistente::where('asistencia',$request->referencia)->first();
+          if ($certificado) {
+          return redirect('certificados/publico')->withStatus(__('Asistentes agregados correctamente.'));
+          }
+          return redirect('certificados/publico')->withStatus(__('Asistentes agregados correctamente.'));
 
       }
 
@@ -81,7 +86,7 @@ class CertificadoController extends Controller
 
             return redirect()->route('certificados')->with('error', '¿Está perdido?');
         }
-   
+
       }
 
 }
