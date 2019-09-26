@@ -42,15 +42,21 @@ class CertificadoController extends Controller
         }
 
         if (Auth::user()->rol_id <= 2) {
-            $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia])->setPaper('letter', 'landscape');
-            return $pdf->download('certificado.pdf');
+            $pdf = PDF::loadView('certificados.pdf',
+            ['asistencia' =>
+            $asistencia])
+            ->setPaper('letter', 'landscape');
+            return $pdf->stream('certificado.pdf');
         }
         if(Auth::user()->rol_id == 3){
 
             if (Auth::user()->id == $usuario->id) {
 
-                $pdf = PDF::loadView('certificados.pdf', ['asistencia' => $asistencia])->setPaper('letter', 'landscape');
-                return $pdf->download('certificado.pdf');
+                $pdf = PDF::loadView('certificados.pdf',
+                 ['asistencia' =>
+                  $asistencia])
+                  ->setPaper('letter', 'landscape');
+                return $pdf->stream('certificado.pdf');
             }
 
             return redirect()->route('certificados')->with('error', '¿Está perdido?');

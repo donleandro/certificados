@@ -11,7 +11,7 @@ return array(
     | in dompdf_config.inc.php. You can also override the entire config file.
     |
     */
-    'show_warnings' => false,   // Throw an Exception on warnings from dompdf
+    'show_warnings' => true,   // Throw an Exception on warnings from dompdf
     'orientation' => 'landscape',
     'defines' => array(
         /**
@@ -76,7 +76,7 @@ return array(
         /**
          * Whether to enable font subsetting or not.
          */
-        "enable_font_subsetting" => false,
+        "enable_font_subsetting" => true,
 
         /**
          * The PDF rendering backend to use
@@ -106,7 +106,7 @@ return array(
          * @link http://www.ros.co.nz/pdf
          * @link http://www.php.net/image
          */
-        "pdf_backend" => "CPDF",
+        "pdf_backend" => "PDF",
 
         /**
          * PDFlib license key
@@ -132,7 +132,7 @@ return array(
          * the desired content might be different (e.g. screen or projection view of html file).
          * Therefore allow specification of content here.
          */
-        "default_media_type" => "screen",
+        "default_media_type" => "print",
 
         /**
          * The default paper size.
@@ -149,7 +149,7 @@ return array(
          * Used if no suitable fonts can be found. This must exist in the font folder.
          * @var string
          */
-        "default_font" => "serif",
+        "default_font" => "helvetica",
 
         /**
          * Image DPI setting
@@ -237,7 +237,7 @@ return array(
         /**
          * Use the more-than-experimental HTML5 Lib parser
          */
-        "enable_html5_parser" => false,
+        "enable_html5_parser" => true,
     ),
 
 

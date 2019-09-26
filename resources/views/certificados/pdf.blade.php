@@ -4,14 +4,37 @@
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>certificados</title>
-<link rel="stylesheet" type="text/css" href="/css/fonts.css" />
+
+
 <style id="applicationStylesheet" type="text/css">
+@font-face {
+		font-family: 'Agfa_Rotis_Sans_Serif_ExBd';
+		src:
+				url({{storage_path('fonts\AgfaRotisSansSerifExtraBold.ttf')}}) format('truetype');
+		font-weight: 500;
+		font-style: normal;
+}
+
+@font-face {
+		font-family: 'Agfa_Rotis_Sans_Serif_Bold';
+		src:url({{storage_path('fonts\AgfaRotisSansSerif-Bold.ttf')}}) format('truetype');
+		font-weight: bold;
+		font-style: normal;
+}
+
+@font-face {
+		font-family: 'Agfa_Rotis_Sans_Serif';
+		src: local('/fontsAgfaRotisSansSerif'),
+				src:url({{storage_path('fonts\AgfaRotisSansSerif.ttf')}}) format('truetype');
+		font-weight: 500;
+		font-style: normal;
+}
+
+
+
 	body {
 		margin: 0;
 		padding: 0;
-		font-family: 'Agfa_Rotis_Sans_Serif';
-    font-weight: 500;
-    font-style: normal;
 	}
 	:root {
 		--web-view-ids: Certificado;
@@ -51,8 +74,8 @@
 		text-align: center;
 
 		font-family: 'Agfa_Rotis_Sans_Serif_Exbd';
-		font-style: normal;
-		font-weight: normal;
+		font-weight: 500;
+    font-style: normal;
 		font-size: 33.274959564208984px;
 		color: rgba(0,0,0,1);
 	}
@@ -162,7 +185,7 @@
 	#Grupo_2 {
 		opacity: 1;
 		position: absolute;
-		width: 459.01px;
+		width: 480.01px;
 		height: 38.922px;
 		left: 261.933px;
 		top: 494.085px;
@@ -176,16 +199,16 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		overflow: hidden;
-		width: 105.183px;
+		/* overflow: hidden; */
+		/* width: 105.183px; */
 		height: 38.922px;
 		line-height: 25.532136917114258px;
 		margin-top: -2.127678871154785px;
-		text-align: left;
+		text-align: center;
 		font-family: Agfa_Rotis_Sans_Serif;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 21.276779174804688px;
+		font-size: 21px;
 		color: rgba(0,0,0,1);
 		letter-spacing: 0.02px;
 	}
@@ -455,30 +478,25 @@
 		<span style="">«</span><span style="">DEPARTAMENTO</span><span style="">»<br/></span><span style="">Dirección de Educación Continuada</span>
 	</div>
 	<div id="Nombres">
-		<span style="">«</span><span style="">NOMBRE</span><span style="">»</span><span style=""> </span><span style="">«</span><span style="">APELLIDOS</span><span style="">»</span>
+		<span style="">{{$asistencia->usuarios->name}}</span><span style=""> </span><span style="">{{$asistencia->usuarios->apellido}}</span>
 	</div>
 	<div id="Titulo">
-		<span style="">«</span><span style="">TÍTULO</span><span style="">»</span>
+		<span style="">{{$asistencia->eventos->nombre}}</span>
 	</div>
 	<div id="certifican_que">
 		<span>certifican que</span>
 	</div>
 	<div id="identificacion">
-		<span style="">identificado con </span><span style="">«</span><span style="">TIPO DE DOCUMENTO</span><span style="">»</span><span style=""> </span><span style="">«</span><span style="">NÚMERO DE DOCUMENTO</span><span style="">»</span>
+		<span style="">identificado con </span><span style="">{{$asistencia->usuarios->tipo_doc}}</span><span style=""> </span><span style="">{{$asistencia->usuarios->documento}}</span>
 	</div>
 	<div id="Seminario">
 		<span>Participó en el Seminario Virtual de Excelencia </span>
 	</div>
 	<div id="Grupo_2">
 		<div id="Realizado_el">
-			<span>Realizado el</span>
+			<span>Realizado el </span><span style="">{{$asistencia->eventos->fecha}}</span><span>, con una duración de 1.5 horas.</span>
 		</div>
-		<div id="__con_una_duraci_n_de_1_5_hora">
-			<span>, con una duración de 1.5 horas.</span>
-		</div>
-		<div id="_FECHA_">
-			<span style="">«</span><span style="">FECHA</span><span style="">»</span>
-		</div>
+
 	</div>
 	<svg class="L_nea_1">
 		<path id="L_nea_1" d="M 0 0 L 279.6243286132813 0">
@@ -510,9 +528,9 @@
 		<span>Bogotá D.C., Colombia</span>
 	</div>
 	<div id="_CONSECUTIVO_">
-		<span style="">«</span><span style="">CONSECUTIVO</span><span style="">»</span>
+		<span style="">VI{{str_pad($asistencia->asistencia, 6, '0', STR_PAD_LEFT)}}</span>
 	</div>
-	<img class="logoUniandes" src="/material/img/logoUniandes.png"/>
+	<img class="logoUniandes"  src="http://certificados.test/material/img/logoUniandes.png"/>
 </div>
 </body>
 </html>

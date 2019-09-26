@@ -108,7 +108,7 @@ class AsistenteController extends Controller
 
     public function descargar($id)
     {
-        return Excel::download(new AsistentesExport($id), 'asistentes.xlsx');
+        return Excel::download(new AsistentesExport($id), 'asistentes_'.$id.'.xlsx');
     }
 
     /**
