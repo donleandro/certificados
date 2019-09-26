@@ -86,4 +86,7 @@
   'agfa_rotis_sans_serif' => array(
     'normal' => $fontDir . '\7954c1bedb3ba143af15ebda1d52a585',
   ),
+  'agfa_rotis_sans_serif_bold' => array(
+    'bold' => $fontDir . '\34ca037c226ee0db09e5f109d2ec708b',
+  ),
 ) ?>

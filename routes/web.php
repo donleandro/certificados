@@ -48,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+Route::get('certificados/publico', 'Eventos\CertificadoController@publico');
+Route::post('certificados/publico', 'Eventos\CertificadoController@validar');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

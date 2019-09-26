@@ -9,8 +9,7 @@
 <style id="applicationStylesheet" type="text/css">
 @font-face {
 		font-family: 'Agfa_Rotis_Sans_Serif_ExBd';
-		src:
-				url({{storage_path('fonts\AgfaRotisSansSerifExtraBold.ttf')}}) format('truetype');
+		src:url({{storage_path('fonts\AgfaRotisSansSerifExtraBold.ttf')}}) format('truetype');
 		font-weight: 500;
 		font-style: normal;
 }
@@ -36,16 +35,13 @@
 		margin: 0;
 		padding: 0;
 	}
-	:root {
-		--web-view-ids: Certificado;
-	}
 	#Certificado * {
 		margin: 0;
 		padding: 0;
 	}
 	#Certificado {
 		position: absolute;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		background: #E5E5E5;
 		width: 1056px;
 		height: 816px;
@@ -54,16 +50,13 @@
 		margin: 0;
 		padding: 0;
 		opacity: 1;
-		--web-view-name: Certificado;
-		--web-view-id: Certificado;
-		--web-enable-deep-linking: true;
 	}
 	#_DEPARTAMENTO__Direcci_n_de_Ed {
 		opacity: 1;
 		position: absolute;
 		left: 194.857px;
 		top: 127.46px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -84,7 +77,7 @@
 		position: absolute;
 		left: 194.857px;
 		top: 266.662px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -104,7 +97,7 @@
 		position: absolute;
 		left: 26.993px;
 		top: 434.409px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -124,7 +117,7 @@
 		position: absolute;
 		left: 324.901px;
 		top: 241.686px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -145,7 +138,7 @@
 		position: absolute;
 		left: 199.915px;
 		top: 346.664px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -166,7 +159,7 @@
 		position: absolute;
 		left: 272.74px;
 		top: 390.471px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -196,11 +189,11 @@
 		position: absolute;
 		left: 0px;
 		top: 0px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		/* overflow: hidden; */
-		/* width: 105.183px; */
+		/* width: 105.183px; */  /*
 		height: 38.922px;
 		line-height: 25.532136917114258px;
 		margin-top: -2.127678871154785px;
@@ -217,7 +210,7 @@
 		position: absolute;
 		left: 184.123px;
 		top: 0px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -238,7 +231,7 @@
 		position: absolute;
 		left: 101.748px;
 		top: 0px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -256,13 +249,9 @@
 	}
 	#L_nea_1 {
 		opacity: 1;
-		fill: transparent;
-		stroke: rgb(0, 0, 0);
-		stroke-width: 1px;
-		stroke-linejoin: round;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
+
+
+
 	}
 	.L_nea_1 {
 		overflow: visible;
@@ -274,13 +263,9 @@
 	}
 	#L_nea_2 {
 		opacity: 1;
-		fill: transparent;
-		stroke: rgb(0, 0, 0);
-		stroke-width: 1px;
-		stroke-linejoin: round;
-		stroke-linecap: butt;
-		stroke-miterlimit: 4;
-		shape-rendering: auto;
+
+
+
 	}
 	.L_nea_2 {
 		overflow: visible;
@@ -295,7 +280,7 @@
 		position: absolute;
 		left: 145.248px;
 		top: 603.951px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -316,7 +301,7 @@
 		position: absolute;
 		left: 145.248px;
 		top: 625.13px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -337,7 +322,7 @@
 		position: absolute;
 		left: 145.248px;
 		top: 641.054px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -358,7 +343,7 @@
 		position: absolute;
 		left: 575.39px;
 		top: 603.951px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -379,7 +364,7 @@
 		position: absolute;
 		left: 6px;
 		top: 696.94px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -400,7 +385,7 @@
 		position: absolute;
 		left: 272.631px;
 		top: 741.429px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -421,7 +406,7 @@
 		position: absolute;
 		left: 892.211px;
 		top: 718.802px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -442,7 +427,7 @@
 		position: absolute;
 		left: 417.363px;
 		top: 699.639px;
-		box-sizing: border-box;
+		/* box-sizing: border-box; */
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
@@ -460,7 +445,7 @@
 	}
 	#logoUniandes {
 		opacity: 1;
-		fill: url(#logoUniandes_A0_Rectangle_2_pattern);
+
 	}
 	.logoUniandes {
 		position: absolute;
@@ -522,7 +507,7 @@
 		<span>Universidad de los Andes | Vigilada Mineducación. <br/>Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964.<br/>Reconocimiento personorería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia.</span>
 	</div>
 	<div id="La_autenticidad_de_este_docume">
-		<span>La autenticidad de este documento puede ser verificada en la página web http://certificadosingenieria.uniandes.edu.co</span>
+		<!-- <span>La autenticidad de este documento puede ser verificada en la página web http://certificadosingenieria.uniandes.edu.co</span> -->
 	</div>
 	<div id="Bogot__D_C___Colombia">
 		<span>Bogotá D.C., Colombia</span>
@@ -530,7 +515,7 @@
 	<div id="_CONSECUTIVO_">
 		<span style="">VI{{str_pad($asistencia->asistencia, 6, '0', STR_PAD_LEFT)}}</span>
 	</div>
-	<img class="logoUniandes"  src="http://certificados.test/material/img/logoUniandes.png"/>
+	  <img class="logoUniandes"  src="{{ asset('material/img/logoUniandes.png') }}"/>  
 </div>
 </body>
 </html>
