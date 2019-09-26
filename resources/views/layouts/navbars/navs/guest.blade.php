@@ -14,6 +14,12 @@
       <ul class="navbar-nav">
 
         <li class="nav-item{{ $activePage == 'login' ? ' active' : '' }}">
+          <a href="{{ url('certificados/publico') }}" class="nav-link">
+            <i class="material-icons">check_circle_outline</i> {{ __('Validar certificado') }}
+          </a>
+        </li>
+
+        <li class="nav-item{{ $activePage == 'login' ? ' active' : '' }}">
           <a href="{{ route('login') }}" class="nav-link">
             <i class="material-icons">fingerprint</i> {{ __('Ingresar') }}
           </a>

@@ -39,12 +39,21 @@ class CertificadoController extends Controller
        */
       public function validar(Request $request)
       {
-          $this->Validate($request,['referencia' => 'required']);
+          $this->Validate($request,[
+            'referencia' => 'required',
+            'documento' => 'required'
+          ]);
           $certificado = Asistente::where('asistencia',$request->referencia)->first();
           if ($certificado) {
-          return redirect('certificados/publico')->withStatus(__('Asistentes agregados correctamente.'));
+            if ($request->documento == $certificado->usuarios->documento) {
+              return redirect('certificados/publico')->withStatus(__('El certificado SI se encuentra'));
+            }
+              return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
+
           }
-          return redirect('certificados/publico')->withStatus(__('Asistentes agregados correctamente.'));
+          else {
+              return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
+          }
 
       }
 
