@@ -73,7 +73,7 @@ class AsistenteController extends Controller
                    $asistencias->asistencia = $serial+1;
                 }
                 $asistencias->save();
-                $asistencias->notify(new NuevoUsuario());
+                $user->notify(new NuevoUsuario());
             }
         }
 
