@@ -58,11 +58,11 @@
                           </td>
                           <td class="td-actions text-right">
                               <a rel="tooltip" class="btn btn-success btn-link" href="{{ url('descargar/asistentes/'.$dato->id) }}" data-original-title="" title="">
-                                <i class="material-icons">cloud_download</i>
+                                REPORTE<i class="material-icons">cloud_download</i>
                                 <div class="ripple-container"></div>
                               </a>
                               <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('asistentes.show', $dato) }}" data-original-title="" title="">
-                                <i class="material-icons">search</i>
+                                USUARIOS<i class="material-icons">search</i>
                                 <div class="ripple-container"></div>
                               </a>
                           </td>
