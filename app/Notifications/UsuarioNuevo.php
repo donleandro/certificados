@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NuevoUsuario extends Notification
+class UsuarioNuevo extends Notification
 {
     use Queueable;
 
@@ -38,16 +38,10 @@ class NuevoUsuario extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-     public function toMail($notifiable)
-     {
-       // dd($this);
-         return (new MailMessage)
-               ->subject('Recuperar contraseña')
-               ->greeting('Hola')
-               ->line('Estás recibiendo este correo porque hiciste una solicitud de recuperación de contraseña para tu cuenta.')
-                ->action('Crear la contraseña', url('/password/reset'))
-               ->salutation('Saludos, '. config('app.name'));
-     }
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)->markdown('mail.usuario.nuevo');
+    }
 
     /**
      * Get the array representation of the notification.

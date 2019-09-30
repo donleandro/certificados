@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\NuevoUsuario;
+use App\Notifications\UsuarioNuevo;
 
 class AsistenteController extends Controller
 {
@@ -73,7 +73,7 @@ class AsistenteController extends Controller
                    $asistencias->asistencia = $serial+1;
                 }
                 $asistencias->save();
-                $user->notify(new NuevoUsuario());
+                $user->notify(new UsuarioNuevo());
             }
         }
 
