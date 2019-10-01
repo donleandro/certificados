@@ -54,9 +54,9 @@ class AsistenteController extends Controller
 
         for ($i=0; $i < count($asistentes[0]); $i++)
         {
-            $email = $asistentes[0][$i][2];
+            $email = $asistentes[0][$i]['correo_electronico'];
 
-            $user = User::where('email',$email)->first();
+           $user = User::where('email',$email)->first();
 
             $noValido = Asistente::where('user_id',$user->id)->where('evento_id',$request->evento)->first();
             $serial = Asistente::max('id');

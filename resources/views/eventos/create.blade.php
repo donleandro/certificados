@@ -71,7 +71,7 @@
                   <label class="col-sm-2 col-form-label" for="input-hora">{{ __('Duración') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
-                      <input class="form-control" name="hora" id="input-hora" type="number" placeholder="{{ __('Hora') }}" value="{{ old('hora') }}"  min="0" required />
+                      <input class="form-control" name="hora" id="input-hora" type="number" placeholder="{{ __('Hora') }}" value="{{ old('hora') }}"  min="0" required step="any" />
                     </div>
                   </div>
                 </div>

@@ -7,34 +7,43 @@ use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
-//use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class UsersImport implements ToModel, WithValidation
+class UsersImport implements ToModel, WithHeadingRow
 {
     use Importable;
 
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
     public function model(array $row)
     {
 
-        $usuario = User::where('email',$row[2])->first();
+
+        $usuario = User::where('email',$row['correo_electronico'])->first();
 
         if ($usuario) {
             return null;
         }
 
         return new User([
+
             'rol_id'   => 3,
-            'name'     => $row[0],
-            'apellido' => $row[1],
-            'email'    => $row[2],
-            'tipo_doc' => $row[3],
-            'documento'=> $row[4],
-            'password' => 'x',
+            'name' => $row['primer_nombre'],
+            'name2'=> $row['segundo_nombre'],
+            'apellido' => $row['primer_apellido'],
+            'apellido2'=> $row['segundo_apellido'],
+            'email' => $row['correo_electronico'],
+            'tipo_doc' => $row['tipo_de_identificacion'],
+            'documento' => $row['no_identificacion'],
+            'profesion' => $row['profesion'],
+            'cargo' => $row['cargo'],
+            'celular' => $row['telefonos_de_contacto_celular'],
+            'direccion' => $row['direccion_de_correspondencia'],
+            'medio' => $row['medio_por_el_cual_se_entero'],
+            'tipo_persona'=> $row['tipo_de_persona_externoestudiante_uniandes_empleado_uniandes_egresado_uniandes'],
+            'uso_datos' => $row['aceptacion_de_uso_de_datos'],
+            'uso_imagen' => $row['aceptacion_de_uso_de_imagen'],
+            'asistencia_minima' => $row['cumple_con_asistencia_minima'],
+            'password' => 'x'
+
         ]);
     }
 
@@ -42,7 +51,7 @@ class UsersImport implements ToModel, WithValidation
     {
         return [
 
-            '*.2' => [ 'required', 'email'],
+            '*.correo_electronico' => [ 'required', 'email'],
 
             /*
             '*.0' => [ 'required', 'email', function($attribute, $value, $onFailure) {
@@ -58,13 +67,6 @@ class UsersImport implements ToModel, WithValidation
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function customValidationAttributes()
-    {
-        return ['2' => 'email'];
-    }
 
 
 
