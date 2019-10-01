@@ -43,7 +43,9 @@ class CertificadoController extends Controller
             'referencia' => 'required',
             'documento' => 'required'
           ]);
-          $certificado = Asistente::where('asistencia',$request->referencia)->first();
+          $referencia = trim($request->referencia, "vi");
+          $referencia = (int)$referencia;
+          $certificado = Asistente::where('asistencia',$referencia)->first();
           if ($certificado) {
             if ($request->documento == $certificado->usuarios->documento) {
               return redirect('certificados/publico')->withStatus(__('El certificado SI se encuentra'));
