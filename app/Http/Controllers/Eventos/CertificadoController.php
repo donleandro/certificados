@@ -50,7 +50,7 @@ class CertificadoController extends Controller
               $certificado = Asistente::where('asistencia',$referencia)->first();
               if ($certificado) {
                 if ($request->documento == $certificado->usuarios->documento) {
-                  return redirect('certificados/publico')->withStatus(__('El certificado SI se encuentra'));
+                  return redirect('certificados/publico')->withStatus(__("El certificado $request->referencia le pertenece al Documento $request->documento"));
                 }
                 return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
 
