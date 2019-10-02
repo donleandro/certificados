@@ -43,18 +43,24 @@ class CertificadoController extends Controller
             'referencia' => 'required',
             'documento' => 'required'
           ]);
-          $referencia = trim($request->referencia, "vi");
-          $referencia = (int)$referencia;
-          $certificado = Asistente::where('asistencia',$referencia)->first();
-          if ($certificado) {
-            if ($request->documento == $certificado->usuarios->documento) {
-              return redirect('certificados/publico')->withStatus(__('El certificado SI se encuentra'));
-            }
-              return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
+          $referencia=$request->referencia;
+          if(strlen($referencia)==8){
+              $referencia = substr($referencia, 2);
+              $referencia = (int)$referencia;
+              $certificado = Asistente::where('asistencia',$referencia)->first();
+              if ($certificado) {
+                if ($request->documento == $certificado->usuarios->documento) {
+                  return redirect('certificados/publico')->withStatus(__('El certificado SI se encuentra'));
+                }
+                return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
 
+              }
+              else {
+                return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
+              }
           }
-          else {
-              return redirect('certificados/publico')->with('error', 'NO se encuentra el certificado');
+          else{
+            return redirect('certificados/publico')->with('error', 'El número de referencia no es correcto');
           }
 
       }
