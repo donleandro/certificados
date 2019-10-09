@@ -18,8 +18,8 @@ class CorreoTableSeeder extends Seeder
       $correo->port = "2525";
       $correo->encryption = "tls";
       $correo->username = "49bd994c8aa57d";
-      $correo->address = "49bd994c8aa57d";
-      $correo->password = "correo@uniades.edu.co";
+      $correo->address = "correo@uniandes.edu.co";
+      $correo->password = "57cb4be80f8d9e";
       $correo->name = "Certificados";
       $correo->save();
     }
