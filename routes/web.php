@@ -40,6 +40,12 @@ Route::group(['middleware' => 'auth'], function () {
     	'destroy' => 'asistentes.destroy',
 	])->middleware('administrador');
 
+
+  Route::resource('correo', 'CorreoController')->names([
+      'index' => 'correo',
+      'update' => 'correo.update',
+  ])->middleware('administrador');
+
   Route::get('descargar/asistentes/{id}', 'Eventos\AsistenteController@descargar');
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
