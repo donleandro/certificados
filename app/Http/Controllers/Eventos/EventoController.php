@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Eventos;
 
+use Illuminate\Http\File;
 use App\Model\Eventos\Evento;
 use Illuminate\Http\Request;
+use App\Http\Requests\EventoRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class EventoController extends Controller
 {
@@ -13,9 +16,9 @@ class EventoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Evento $model)
     {
-        //
+         return view('eventos.index', ['datos' => $model->paginate(15)]);
     }
 
     /**
@@ -25,7 +28,7 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        return view('eventos.create');
     }
 
     /**
@@ -34,21 +37,26 @@ class EventoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(EventoRequest $request, Evento $model)
+    {            
+        $nombreImagen = $request->file('imagen')->getClientOriginalName(); 
+      
+        $model->create(
+            [                
+                'estado' => $request->estado,
+                'nombre' => $request->nombre,
+                'descripcion' => $request->descripcion,
+                'imagen' => $nombreImagen,
+                'fecha' => $request->fecha,
+                'hora' => $request->hora,
+            ]
+        ); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Eventos\Evento  $evento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Evento $evento)
-    {
-        //
+        Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
+
+        return redirect()->route('eventos')->withStatus(__('Evento creado con éxito.'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -58,7 +66,7 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
-        //
+        return view('eventos.edit', compact('evento'));
     }
 
     /**
@@ -69,8 +77,22 @@ class EventoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Evento $evento)
-    {
-        //
+    {              
+        $evento->nombre = $request->nombre;
+        $evento->estado  = $request->estado;
+        $evento->descripcion  = $request->descripcion;
+        $evento->fecha  = $request->fecha;
+        $evento->hora  = $request->hora;
+
+        if ($request->imagen) {
+            $nombreImagen = $request->file('imagen')->getClientOriginalName(); 
+            $evento->imagen  = $nombreImagen;
+            Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
+        }
+
+        $evento->save(); 
+
+        return redirect()->route('eventos')->withStatus(__('Evento actualizado con éxito.'));
     }
 
     /**
@@ -81,6 +103,6 @@ class EventoController extends Controller
      */
     public function destroy(Evento $evento)
     {
-        //
+        echo "En construcción";
     }
 }

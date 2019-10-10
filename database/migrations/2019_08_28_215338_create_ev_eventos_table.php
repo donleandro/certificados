@@ -15,6 +15,12 @@ class CreateEvEventosTable extends Migration
     {
         Schema::create('ev_eventos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('estado')->nullable();
+            $table->string('nombre');
+            $table->longText('descripcion')->nullable();
+            $table->date('fecha')->nullable();
+            $table->double('hora')->nullable();
+            $table->string('imagen')->unique();
             $table->timestamps();
         });
     }
