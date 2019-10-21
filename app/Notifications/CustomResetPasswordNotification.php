@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
-use App\correo;
+use App\Correo;
 
 class CustomResetPasswordNotification extends Notification
 {
