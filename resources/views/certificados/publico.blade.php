@@ -39,7 +39,7 @@
               </div>
             @endif
           <div class="card-body">
-            <p class="card-description text-center">{{ __('Digite el código de referencia y documento') }}</p>
+            <p class="card-description text-center">{{ __('Digite el número de Certificado y el Documento de Identificación') }}</p>
             <div class="bmd-form-group{{ $errors->has('referencia') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
