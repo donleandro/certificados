@@ -39,8 +39,8 @@ class EventoRequest extends FormRequest
             'hora' => [
                 'required'
             ],
-            'imagen' => [
-                'required', new ImagenUnique
+            'firma' => [
+                'required'
             ],
         ];
     }

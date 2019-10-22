@@ -40,6 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     	'destroy' => 'asistentes.destroy',
 	])->middleware('administrador');
 
+  Route::resource('firmas', 'Eventos\FirmaController')->names([
+      'index' => 'firmas',
+      'create' => 'firmas.create',
+      'edit' => 'firmas.edit'
+  ])->middleware('administrador');
 
   Route::resource('correo', 'CorreoController')->names([
       'index' => 'correo',
