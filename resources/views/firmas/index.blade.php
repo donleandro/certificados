@@ -57,11 +57,11 @@
                             {{ $dato->cargo }}
                           </td>
                           <td class="td-actions text-right">
-                              <form action="{{ route('eventos.destroy', $dato) }}" method="post">
+                              <form action="{{ route('firmas.destroy', $dato) }}" method="post">
                                   @csrf
                                   @method('delete')
 
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('eventos.edit', $dato) }}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('firmas.edit', $dato) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>

@@ -60,9 +60,9 @@ class EventoController extends Controller
      * @param  \App\Model\Eventos\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evento $evento)
+    public function edit(Evento $evento, Firma $model)
     {
-        return view('eventos.edit', compact('evento'));
+        return view('eventos.edit', compact('evento'), ['firmas' => $model->all()]);
     }
 
     /**
@@ -77,17 +77,10 @@ class EventoController extends Controller
         $evento->nombre = $request->nombre;
         $evento->estado  = $request->estado;
         $evento->descripcion  = $request->descripcion;
+        $evento->firma_id  = $request->firma;
         $evento->fecha  = $request->fecha;
         $evento->hora  = $request->hora;
-
-        if ($request->imagen) {
-            $nombreImagen = $request->file('imagen')->getClientOriginalName();
-            $evento->imagen  = $nombreImagen;
-            Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
-        }
-
         $evento->save();
-
         return redirect()->route('eventos')->withStatus(__('Evento actualizado con éxito.'));
     }
 

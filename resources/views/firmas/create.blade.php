@@ -82,7 +82,7 @@
                 </div>
 
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Añadir evento') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('Añadir firma') }}</button>
               </div>
             </div>
           </form>

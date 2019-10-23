@@ -54,16 +54,6 @@ class FirmaController extends Controller
         return redirect()->route('firmas')->withStatus(__('Firma creada con éxito.'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Eventos\Firma  $firma
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Firma $firma)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -73,7 +63,7 @@ class FirmaController extends Controller
      */
     public function edit(Firma $firma)
     {
-        //
+        return view('firmas.edit', compact('firma'));
     }
 
     /**
@@ -85,7 +75,18 @@ class FirmaController extends Controller
      */
     public function update(Request $request, Firma $firma)
     {
-        //
+        $firma->nombre = $request->nombre;
+        $firma->area  = $request->area;
+        $firma->cargo  = $request->cargo;
+
+        if ($request->imagen) {
+            $nombreImagen = $request->file('imagen')->getClientOriginalName();
+            $firma->imagen  = $nombreImagen;
+            Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
+        }
+
+        $firma->save();
+        return redirect()->route('firmas')->withStatus(__('Evento actualizado con éxito.'));
     }
 
     /**

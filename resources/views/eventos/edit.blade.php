@@ -34,7 +34,7 @@
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('descripcion') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">  
+                    <div class="form-group{{ $errors->has('descripcion') ? ' has-danger' : '' }}">
                        <textarea class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" name="descripcion" id="input-descripcion" type="" placeholder="{{ __('descripcion') }}" value="{{ old('descripcion', $evento->descripcion) }}" rows="3">{{ old('descripcion', $evento->descripcion) }}</textarea>
                       @if ($errors->has('descripcion'))
                         <span id="descripcion-error" class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
@@ -57,19 +57,26 @@
                   <label class="col-sm-2 col-form-label" for="input-hora">{{ __('Hora') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
-                      <input class="form-control" name="hora" id="input-hora" type="time" placeholder="{{ __('Hora') }}" value="{{ old('hora', $evento->hora) }}"  />
+                      <input class="form-control" name="hora" id="input-hora" type="number" placeholder="{{ __('Hora') }}" value="{{ old('hora', $evento->hora) }}"  min="0" required step="any"/>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-imagen">{{ __('imagen') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Firma') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-control-file">
-                      <input class="form-control-file" name="imagen" id="input-imagen" type="file" value="{{ old('imagen', $evento->imagen) }}"/>
+                    <div class="form-group{{ $errors->has('firma') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('firma') ? ' is-invalid' : '' }}" id="input-firma" required="true" aria-required="true" name="firma">
+                        <option value="{{ $evento->firma_id }}">{{$evento->firma->nombre}}</option>
+                        @foreach($firmas as $firma )
+                        <option value="{{ $firma->id }}">{{ $firma->nombre }}</option>
+                        @endforeach
+                      </select>
+                      @if ($errors->has('firma'))
+                        <span id="firma-error" class="error text-danger" for="input-firma">{{ $errors->first('firma') }}</span>
+                      @endif
                     </div>
                   </div>
-                </div>  <br>
-
+                </div>
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('estado') }}</label>
                   <div class="col-sm-7">
@@ -77,15 +84,15 @@
                       <div class="togglebutton">
                         <label>
                           <input name="estado" type="checkbox" {{ $evento->estado ? ' checked' : '' }}  value="{{ old('estado', 1) }}">
-                          <span class="toggle"></span>         
+                          <span class="toggle"></span>
                         </label>
-                      </div> 
+                      </div>
                       @if ($errors->has('estado'))
                       <span id="estado-error" class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                       @endif
                     </div>
                   </div>
-                </div>               
+                </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
