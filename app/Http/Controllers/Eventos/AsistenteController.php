@@ -121,4 +121,29 @@ class AsistenteController extends Controller
     {
         //
     }
+
+    public function addAsistente($id, Request $request)
+    {
+
+    }
+
+    public function findAsistente(Request $request)
+    {   
+      $usuario = User::where('email',$request->correo)->first();
+      if ($usuario) {
+
+        return response()->json([
+            'respuesta' => 1,
+            'name' => 'Abigail',
+            'name2' => 'CA',
+            'apellido2' => 'CA',
+            'documento' => 'CA',
+        ]);
+
+      }else{ return response()->json(['respuesta' => 0 ]); }
+
+    }
+
+
+
 }

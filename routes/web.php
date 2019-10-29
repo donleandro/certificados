@@ -53,6 +53,12 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::get('descargar/asistentes/{id}', 'Eventos\AsistenteController@descargar');
 
+  Route::post('add/asistentes/{id}', 'Eventos\AsistenteController@addAsistente');
+  Route::post('find/asistentes', 'Eventos\AsistenteController@findAsistente');
+
+  Route::get('add/asistentes{id}', 'Eventos\AsistenteController@addAsistente');
+  Route::get('find/asistentes', 'Eventos\AsistenteController@findAsistente');
+
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
   Route::get('certificados/{evento}/{user}', 'Eventos\CertificadoController@pdf');
 	Route::get('certificadosb/{evento}/{user}', 'Eventos\CertificadoController@pdfb');
