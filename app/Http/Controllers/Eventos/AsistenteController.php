@@ -111,16 +111,6 @@ class AsistenteController extends Controller
         return Excel::download(new AsistentesExport($id), 'asistentes_'.$id.'.xlsx');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Eventos\Asistente  $asistente
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Asistente $asistente)
-    {
-        //
-    }
 
     public function addAsistente($id, Request $request)
     {
@@ -210,6 +200,19 @@ class AsistenteController extends Controller
 
       }else{ return response()->json(['respuesta' => 0 ]); }
 
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Model\Eventos\Asistente  $asistente
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Asistente $asistente)
+    {
+        $asistente->delete();
+        return redirect()->route('asistentes')->withStatus(__('Usuario eliminado con éxito.'));
     }
 
 

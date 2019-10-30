@@ -173,6 +173,14 @@
                                 <i class="material-icons">picture_as_pdf</i> DESCARGAR
                                 <div class="ripple-container"></div>
                               </a>
+                              <form action="{{ route('asistentes.destroy', $dato) }}" method="post" style="display: inline;">
+                                  @csrf
+                                  @method('delete')
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("¿Estás seguro de que deseas eliminar a este usuario?") }}') ? this.parentElement.submit() : ''">
+                                      <i class="material-icons">close</i>
+                                      <div class="ripple-container"></div>
+                                  </button>
+                              </form>
                           </td>
                         </tr>
                       @endforeach
