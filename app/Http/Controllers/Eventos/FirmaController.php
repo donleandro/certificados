@@ -39,7 +39,7 @@ class FirmaController extends Controller
     public function store(Request $request, Firma $model)
     {
         $nombreImagen = $request->file('imagen')->getClientOriginalName();
-
+        $nombreImagen = \Str::random(3).$nombreImagen;
         $model->create(
             [
                 'nombre' => $request->nombre,
@@ -81,8 +81,9 @@ class FirmaController extends Controller
 
         if ($request->imagen) {
             $nombreImagen = $request->file('imagen')->getClientOriginalName();
+            $nombreImagen = \Str::random(3).$nombreImagen;
             $firma->imagen  = $nombreImagen;
-            Storage::putFileAs('public/eventos', new File($request->imagen), $nombreImagen);
+            Storage::putFileAs('public/firmas', new File($request->imagen), $nombreImagen);
         }
 
         $firma->save();

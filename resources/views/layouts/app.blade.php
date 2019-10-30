@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
+
+    <!-- Latest compiled and minified CSS jasny -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -48,7 +52,8 @@
         <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-tagsinput.js"></script>
         <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-        <script src="{{ asset('material') }}/js/plugins/jasny-bootstrap.min.js"></script>
+        <!-- <script src="{{ asset('material') }}/js/plugins/jasny-bootstrap.min.js"></script> -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
         <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
         <script src="{{ asset('material') }}/js/plugins/fullcalendar.min.js"></script>
         <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
@@ -58,7 +63,7 @@
         <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         <!-- Library for adding dinamically elements -->
-        <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>  
+        <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>
         <!-- Chartist JS -->
         <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
         <!--  Notifications Plugin    -->

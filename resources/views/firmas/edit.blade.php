@@ -1,6 +1,8 @@
 @extends('layouts.app', ['activePage' => 'firmas', 'titlePage' => __('Firmas')])
 
 @section('content')
+
+
   <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -68,21 +70,24 @@
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-imagen">{{ __('Firma') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-control-file">
-                      <input class="form-control-file" name="imagen" id="input-imagen" type="file" required value="{{ old('imagen', $firma->imagen) }}"/>
-                    </div>
+                    <label class="col-sm-2 col-form-label" >{{ __('Firma') }}</label>
+                      <div class="col-sm-7">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                          <img src="{{ asset('storage/firmas/'.$firma->imagen) }}"  alt="{{$firma->imagen}}">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                        <div>
+                          <span class="btn btn-raised btn-round btn-default btn-file"><span class="fileinput-new">Seleccionar firma</span><span class="fileinput-exists">Change</span>
+                          <input type="file" class="form-control-file" name="imagen"  id="input-imagen" value="{{ old('imagen', $firma->imagen) }}" ></span>
+                          <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
+                        </div>
+                      </div>
                   </div>
-                </div>  <br>
-
-
-
-
                 </div>
-
+                </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Añadir firma') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('Actualizar firma') }}</button>
               </div>
             </div>
           </form>
@@ -90,4 +95,5 @@
       </div>
     </div>
   </div>
+
 @endsection
