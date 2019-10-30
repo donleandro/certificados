@@ -48,17 +48,25 @@
                           </button>
                           </div>
                         </span>
-                           <small id="resuladoBusqueda" class="form-text text-muted" style="color: red!important;" >-</small>
-                        <form action="#" method="post" style="display: none;" id="formAsistenteanterior">
+
+                        <form action="{{url('add/asistenteexistente/'.$evento->id)}}" method="post" style="display: none;" id="formAsistenteExistente">
+                          @csrf
+                          <small class="form-text text-muted" style="color: blue!important;" >Resultado:</small>
                           <input type="text" class="form-control" id="InputnombreCompleto" aria-describedby="nameHelp" disabled>
-                          <input type="hidden" id="Inputid" >
+                          <input type="hidden" id="Inputid" name="usuario" >
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" id="guardarAsistente" class="btn btn-primary">Guardar asistente</button>
+                              <button type="submit" class="btn btn-primary">Guardar asistente</button>
                           </div>
                         </form>
-                        <form action="#" method="post" style="display: none;" id="formAsistente" >
-                        <div >
+                        <form action="{{url('add/asistentes/'.$evento->id)}}" method="post" style="display: none;" id="formAsistente" >
+                          @csrf
+                           <small class="form-text text-muted" style="color: red!important;" >Correo no encontrado, Ingrese nuevos datos</small>
+                           <div class="form-row">
+                           <div class="col">
+                             <input type="email" class="form-control" id="Inputemail" aria-describedby="emailHelp" placeholder="Confirmar correo" name="email">
+                           </div>
+                           </div>
                           <div class="form-row">
                            <div class="col">
                              <input type="text" class="form-control" id="Inputname" aria-describedby="nameHelp" placeholder="Primer nombre" name="name">
@@ -67,43 +75,47 @@
                              <input type="text" class="form-control" id="Inputname2" aria-describedby="name2Help" placeholder="Segundo nombre" name="name2">
                            </div>
                            <div class="col">
-                             <input type="text" class="form-control" id="Inputapellido" aria-describedby="apellidoHelp" placeholder="Primer apellido" name="apellido">
+                             <input type="text" class="form-control" id="Inputapellido" aria-describedby="apellidoHelp" placeholder="Segundo apellido" name="apellido">
                            </div>
                            </div>
                            <div class="form-row">
-                           <div class="col">
-                             <input type="text" class="form-control" id="Inputtipo_doc" aria-describedby="tipo_docHelp" placeholder="Segundo apellido" name="tipo_doc">
-                           </div>
+                             <div class="col">
+                               <input type="text" class="form-control" id="Inputapellido2" aria-describedby="apellido2Help" placeholder="Segundo apellido" name="apellido2">
+                             </div>
+                             <div class="col">
+                               <input type="text" class="form-control" id="Inputtipo_doc" aria-describedby="tipo_docHelp" placeholder="Tipo documento" name="tipo_doc">
+                             </div>
                            <div class="col">
                              <input type="text" class="form-control" id="Inputdocumento" aria-describedby="documentoHelp" placeholder="Documento" name="documento">
                            </div>
+                         </div>
+                         <div class="form-row">
                            <div class="col">
                              <input type="text" class="form-control" id="Inputprofesion" aria-describedby="profesionHelp" placeholder="Profesión" name="profesion">
                            </div>
-                         </div>
-                         <div class="form-row">
                            <div class="col">
                              <input type="text" class="form-control" id="Inputcargo" aria-describedby="cargoHelp" placeholder="Cargo" name="cargo">
                            </div>
                            <div class="col">
                              <input type="number" class="form-control" id="Inputcelular" aria-describedby="celularHelp" placeholder="Celular" name="celular">
                            </div>
-                           <div class="col">
-                             <input type="text" class="form-control" id="Inputdireccion" aria-describedby="direccionHelp" placeholder="Dirección" name="direccion">
-                           </div>
                          </div>
                          <div class="form-row">
-                           <div class="col">
-                             <input type="text" class="form-control" id="Inputmedio" aria-describedby="medioHelp" placeholder="Medio" name="medio">
-                           </div>
                            <div class="col">
                              <input type="text" class="form-control" id="Inputtipo_persona" aria-describedby="tipo_personaHelp" placeholder="Tipo persona" name="tipo_persona">
                            </div>
                            <div class="col">
                              <input type="text" class="form-control" id="Inputasistencia_minima" aria-describedby="asistencia_minimaHelp" placeholder="Asistencia minima" name="asistencia_minima">
                            </div>
+                           <div class="col">
+                             <input type="text" class="form-control" id="Inputdireccion" aria-describedby="direccionHelp" placeholder="Dirección" name="direccion">
+                           </div>
+                           <div class="col">
+                             <input type="text" class="form-control" id="Inputmedio" aria-describedby="medioHelp" placeholder="Medio" name="medio">
+                           </div>
+                           </div>
                          </div>
-                         <div class="form-row">
+                         <!-- <div class="form-row">
                            <label class="col-form-label">Acepta uso de imagen</label>
                            <div class="togglebutton">
                               <label>
@@ -111,12 +123,13 @@
                                 <span class="toggle"></span>
                               </label>
                             </div>
+                        </div> -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar asistente</button>
                         </div>
-                      </div></div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                          <button type="button" id="guardarAsistente" class="btn btn-primary">Guardar asistente</button>
                       </div>
+
                       </form>
                     </div>
                   </div>
@@ -186,12 +199,14 @@
 
       $.post("{{ url('find/asistentes')}}", {correo: correo, _token: csrftoken}, function(result){
         if (result.respuesta == 0) {
-          $("#resuladoBusqueda").text("Correo no encontrado, Ingrese nuevos datos:");
           $( "#formAsistente" ).show("slow");
+          $( "#formAsistenteExistente" ).hide();
         }
         if (result.respuesta == 1) {
-          $("#resuladoBusqueda").text("Correo no encontrado, Ingrese nuevos datos:");
-          $( "#formAsistente" ).show("slow");
+          $( "#InputnombreCompleto" ).val(result.nombre);
+          $( "#Inputid" ).val(result.id);
+          $( "#formAsistenteExistente" ).show("slow");
+          $( "#formAsistente" ).hide();
         }
 
       });
