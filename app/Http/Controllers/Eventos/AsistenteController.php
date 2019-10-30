@@ -73,7 +73,7 @@ class AsistenteController extends Controller
                    $asistencias->asistencia = $serial+1;
                 }
                 $asistencias->save();
-                $user->notify(new UsuarioNuevo());
+                //$user->notify(new UsuarioNuevo());
             }
         }
 
@@ -200,6 +200,22 @@ class AsistenteController extends Controller
 
       }else{ return response()->json(['respuesta' => 0 ]); }
 
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Model\Eventos\Asistente  $asistente
+     * @return \Illuminate\Http\Response
+     */
+    public function Enviocertificados($id)
+    {
+      $asistencias = Asistente::where('evento_id',$id)->get();
+      foreach ($asistencias as $asistencia) {
+        $asistencia->usuarios->notify(new UsuarioNuevo());
+      }
+      return redirect()->route('asistentes')->withStatus(__('Mensajes enviados con éxito.'));
     }
 
 

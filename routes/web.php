@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('add/asistentes/{id}', 'Eventos\AsistenteController@addAsistente');
   Route::post('add/asistenteexistente/{id}', 'Eventos\AsistenteController@addAsistenteExistente');
   Route::post('find/asistentes', 'Eventos\AsistenteController@findAsistente');
+  Route::get('certificado/asistentes/{id}', 'Eventos\AsistenteController@Enviocertificados');
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
   Route::get('certificados/{evento}/{user}', 'Eventos\CertificadoController@pdf');
