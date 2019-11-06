@@ -76,13 +76,21 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label" for="input-imagen">{{ __('Imagen') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Firma') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-control-file">
-                      <input class="form-control-file" name="imagen" id="input-imagen" type="file" required value="{{ old('imagen') }}"/>
+                    <div class="form-group{{ $errors->has('firma') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('firma') ? ' is-invalid' : '' }}" id="input-firma" required="true" aria-required="true" name="firma">
+                        <option value="{{ old('firma') }}">Seleccionar</option>
+                        @foreach($firmas as $firma )
+                        <option value="{{ $firma->id }}">{{ $firma->nombre }}</option>
+                        @endforeach
+                      </select>
+                      @if ($errors->has('firma'))
+                        <span id="firma-error" class="error text-danger" for="input-firma">{{ $errors->first('firma') }}</span>
+                      @endif
                     </div>
                   </div>
-                </div>  <br>
+                </div>
 
                 <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Estado') }}</label>

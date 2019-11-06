@@ -40,6 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     	'destroy' => 'asistentes.destroy',
 	])->middleware('administrador');
 
+  Route::resource('firmas', 'Eventos\FirmaController')->names([
+      'index' => 'firmas',
+      'create' => 'firmas.create',
+      'edit' => 'firmas.edit'
+  ])->middleware('administrador');
 
   Route::resource('correo', 'CorreoController')->names([
       'index' => 'correo',
@@ -47,6 +52,11 @@ Route::group(['middleware' => 'auth'], function () {
   ])->middleware('administrador');
 
   Route::get('descargar/asistentes/{id}', 'Eventos\AsistenteController@descargar');
+
+  Route::post('add/asistentes/{id}', 'Eventos\AsistenteController@addAsistente');
+  Route::post('add/asistenteexistente/{id}', 'Eventos\AsistenteController@addAsistenteExistente');
+  Route::post('find/asistentes', 'Eventos\AsistenteController@findAsistente');
+  Route::get('certificado/asistentes/{id}', 'Eventos\AsistenteController@Enviocertificados');
 
 	Route::get('certificados', ['as' => 'certificados', 'uses' => 'Eventos\CertificadoController@index']);
   Route::get('certificados/{evento}/{user}', 'Eventos\CertificadoController@pdf');

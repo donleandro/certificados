@@ -32,8 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('direccion')->nullable();
             $table->string('medio')->nullable();
             $table->string('tipo_persona')->nullable();
-            $table->string('uso_datos')->nullable();
-            $table->string('uso_imagen')->nullable();
+            $table->string('uso_datos')->nullable();          
             $table->string('asistencia_minima')->nullable();
             $table->rememberToken();
             $table->timestamps();

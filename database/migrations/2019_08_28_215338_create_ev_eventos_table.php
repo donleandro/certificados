@@ -20,7 +20,8 @@ class CreateEvEventosTable extends Migration
             $table->longText('descripcion')->nullable();
             $table->date('fecha')->nullable();
             $table->double('hora')->nullable();
-            $table->string('imagen')->unique();
+            $table->biginteger('firma_id')->unsigned();
+            $table->foreign('firma_id')->references('id')->on('ev_firmas');
             $table->timestamps();
         });
     }

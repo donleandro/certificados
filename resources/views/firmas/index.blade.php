@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'user-management', 'titlePage' => __('Gestión de usuarios')])
+@extends('layouts.app', ['activePage' => 'firmas', 'titlePage' => __('Firmas')])
 
 @section('content')
   <div class="content">
@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ __('Usuario') }}</h4>
-                <p class="card-category"> {{ __('Aquí puedes administrar usuarios') }}</p>
+                <h4 class="card-title ">{{ __('Firmas') }}</h4>
+                <p class="card-category"> {{ __('Aquí puedes gestionar tus firmas') }}</p>
               </div>
               <div class="card-body">
                 @if (session('status'))
@@ -25,58 +25,51 @@
                 @endif
                 <div class="row">
                   <div class="col-12 text-right">
-                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Agregar usuario') }}</a>
+                    <a href="{{ route('firmas.create') }}" class="btn btn-sm btn-primary">{{ __('Añadir Firma') }}</a>
                   </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                          {{ __('Name') }}
+                        {{ __('Nombre') }}
                       </th>
                       <th>
-                        {{ __('Email') }}
+                        {{ __('Area') }}
                       </th>
                       <th>
-                        {{ __('Creation date') }}
+                        {{ __('cargo') }}
                       </th>
                       <th class="text-right">
-                        {{ __('Actions') }}
+                        {{ __('Acción') }}
                       </th>
                     </thead>
                     <tbody>
-                      @foreach($users as $user)
+                      @foreach($datos as $dato)
                         <tr>
                           <td>
-                            {{ $user->name }}
+                            {{ $dato->nombre }}
                           </td>
                           <td>
-                            {{ $user->email }}
+                            {{ $dato->area }}
                           </td>
                           <td>
-                            {{ $user->created_at->format('Y-m-d') }}
+                            {{ $dato->cargo }}
                           </td>
                           <td class="td-actions text-right">
-                            @if ($user->id != auth()->id())
-                              <form action="{{ route('user.destroy', $user) }}" method="post">
+                              <form action="{{ route('firmas.destroy', $dato) }}" method="post">
                                   @csrf
                                   @method('delete')
 
-                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('user.edit', $user) }}" data-original-title="" title="">
+                                  <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('firmas.edit', $dato) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
                                   </a>
-                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("¿Estás seguro de que deseas eliminar a este usuario?") }}') ? this.parentElement.submit() : ''">
+                                  <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this dato?") }}') ? this.parentElement.submit() : ''">
                                       <i class="material-icons">close</i>
                                       <div class="ripple-container"></div>
                                   </button>
                               </form>
-                            @else
-                              <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('profile.edit') }}" data-original-title="" title="">
-                                <i class="material-icons">edit</i>
-                                <div class="ripple-container"></div>
-                              </a>
-                            @endif
                           </td>
                         </tr>
                       @endforeach

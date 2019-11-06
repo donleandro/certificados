@@ -13,7 +13,12 @@ class Evento extends Model
      *
      * @var array
      */
-    protected $fillable = [         
-        'estado', 'nombre', 'descripcion', 'imagen', 'fecha', 'hora'
+    protected $fillable = [
+        'estado', 'nombre', 'descripcion', 'imagen', 'fecha', 'firma_id', 'hora'
     ];
+
+    public function firma()
+    {
+        return $this->belongsTo('App\Model\Eventos\firma','firma_id');
+    }
 }
